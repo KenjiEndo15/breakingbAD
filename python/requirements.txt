@@ -1,0 +1,3 @@
+ansible-core==2.13.4
+pywinrm==0.4.3
+jmespath==1.0.1

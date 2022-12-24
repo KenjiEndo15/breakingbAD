@@ -1,0 +1,8 @@
+python/bin
+python/include
+python/lib
+python/lib64
+python/venv
+python/pyvenv.cfg
+
+vagrant/.vagrant

@@ -1,0 +1,108 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby
+
+Vagrant.require_version ">= 2.3.0"
+VAGRANTFILE_API_VERSION = "2"
+
+require "yaml"
+vbox_group = "/breakingbAD"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.provider "virtualbox" do |vbox|
+        vbox.customize ["modifyvm", :id, "--groups", vbox_group]
+    end
+
+    config.vm.boot_timeout = 600
+    config.vm.graceful_halt_timeout = 600
+    config.winrm.retry_limit = 30
+    config.winrm.retry_delay = 10
+
+    # Domain Controllers
+    hosts_path_dc = "../ansible/host_vars/dc*/*.yml"
+    hosts_filename_dc = Dir.glob(hosts_path_dc)
+
+    hosts_filename_dc.each do |host_filename_dc|
+        domain_controller = YAML.load_file(File.join(File.dirname(__FILE__), host_filename_dc))
+
+        host_name           = domain_controller["host_name"]
+        host_ip             = domain_controller["host_ip"]
+        vagrant_box         = domain_controller["vagrant_box"]
+        vagrant_box_version = domain_controller["vagrant_box_version"]
+        vbox_name           = domain_controller["vbox_name"]
+        vbox_gui            = domain_controller["vbox_gui"]
+        vbox_memory         = domain_controller["vbox_memory"]
+        vbox_cpus           = domain_controller["vbox_cpus"]
+        vbox_os             = domain_controller["operating_system"]
+
+        config.vm.define host_name do |dc|
+            dc.vm.hostname      = host_name
+            dc.vm.box           = vagrant_box
+            dc.vm.box_version   = vagrant_box_version
+            dc.vm.network :private_network, ip: host_ip
+
+            if Vagrant.has_plugin?("vagrant-vbguest") then
+                config.vbguest.auto_update = false
+            end
+
+            if vbox_os == "windows" then
+                dc.vm.guest = :windows
+                dc.vm.communicator = "winrm"
+                dc.vm.provision :shell, :path => "./script/Install-WMF3Hotfix.ps1", privileged: false
+                dc.vm.provision :shell, :path => "./script/ConfigureRemotingForAnsible.ps1", privileged: false
+            end
+            
+            dc.vm.provider :virtualbox do |vbox|
+                vbox.name           = File.basename(File.dirname(__FILE__)) + "_" + vbox_name + "_" + Time.now.to_i.to_s
+                vbox.gui            = vbox_gui
+                vbox.memory         = vbox_memory
+                vbox.cpus           = vbox_cpus
+                vbox.linked_clone   = true
+                vbox.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
+            end
+        end
+    end
+
+    # Servers
+    hosts_path_srv = "../ansible/host_vars/srv*/*.yml"
+    hosts_filename_srv = Dir.glob(hosts_path_srv)
+
+    hosts_filename_srv.each do |host_filename_srv|
+        server = YAML.load_file(File.join(File.dirname(__FILE__), host_filename_srv))
+
+        host_name           = server["host_name"]
+        host_ip             = server["host_ip"]
+        vagrant_box         = server["vagrant_box"]
+        vagrant_box_version = server["vagrant_box_version"]
+        vbox_name           = server["vbox_name"]
+        vbox_gui            = server["vbox_gui"]
+        vbox_memory         = server["vbox_memory"]
+        vbox_cpus           = server["vbox_cpus"]
+        vbox_os             = server["operating_system"]
+
+        config.vm.define host_name do |srv|
+            srv.vm.hostname     = host_name
+            srv.vm.box          = vagrant_box 
+            srv.vm.box_version  = vagrant_box_version
+            srv.vm.network :private_network, ip: host_ip
+
+            if Vagrant.has_plugin?("vagrant-vbguest") then
+                config.vbguest.auto_update = false
+            end
+            
+            if vbox_os == "windows" then
+                srv.vm.guest = :windows
+                srv.vm.communicator = "winrm"
+                srv.vm.provision :shell, :path => "script/Install-WMF3Hotfix.ps1", privileged: false
+                srv.vm.provision :shell, :path => "script/ConfigureRemotingForAnsible.ps1", privileged: false
+            end
+
+            srv.vm.provider :virtualbox do |vbox|              
+                vbox.name           = File.basename(File.dirname(__FILE__)) + "_" + vbox_name + "_" + Time.now.to_i.to_s
+                vbox.gui            = vbox_gui 
+                vbox.memory         = vbox_memory
+                vbox.cpus           = vbox_cpus
+                vbox.linked_clone   = true
+            end
+        end
+    end
+end

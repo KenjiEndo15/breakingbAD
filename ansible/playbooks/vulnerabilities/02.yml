@@ -1,0 +1,10 @@
+- name: NTLMv1
+  hosts: "{{ host_name | default('srv01', true) }}" # taken from the --extra-vars cli option
+  vars:
+    action: "{{ action }}" # taken from the --extra-vars cli option
+  roles:
+    - role: ../../roles/vulnerabilities/02/enable
+      when: action == 'enable'
+    - role: ../../roles/vulnerabilities/02/disable
+      when: action == 'disable'
+  gather_facts: false

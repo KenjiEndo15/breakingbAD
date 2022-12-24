@@ -1,0 +1,14 @@
+# Host
+host_name: SRV02
+host_ip: 192.168.56.21
+operating_system: windows
+
+# Vagrant
+vagrant_box: StefanScherer/windows_2019
+vagrant_box_version: 2019.05.22
+
+# VirtualBox
+vbox_name: SRV02
+vbox_gui: false
+vbox_memory: 3000
+vbox_cpus: 2

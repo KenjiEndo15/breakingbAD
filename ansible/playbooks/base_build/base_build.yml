@@ -1,0 +1,3 @@
+- import_playbook: 01-hosts.yml
+- import_playbook: 02-adds.yml
+- import_playbook: 03-adcs.yml

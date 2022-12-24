@@ -1,0 +1,4 @@
+- name: set NTLMv2 response only
+  ansible.windows.win_powershell:
+    script: |
+      set-itemproperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa' -name lmcompatibilitylevel -value 3

@@ -1,0 +1,15 @@
+- name: install the WebDAV Redirector
+  ansible.windows.win_feature:
+    name: WebDAV-Redirector
+  register: reboot_webdav
+
+- name: reboot if the WebDAV Redirector has just been installed
+  win_reboot:
+    reboot_timeout: 900
+    post_reboot_delay: 100
+  when: reboot_webdav.changed
+
+- name: enable the WebClient service
+  ansible.windows.win_powershell:
+    script: |
+      net start webclient

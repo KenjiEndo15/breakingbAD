@@ -1,0 +1,9 @@
+- name: trigger LLMNR, NBT-NS & mDNS search
+  ansible.windows.win_powershell:
+    script: |
+      New-PSDrive -Name 'Public' -PSProvider 'FileSystem' -Root \\{{ share }}\{{ share }}
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: "{{ domain.domain_fqdn }}\\{{ user }}"
+    ansible_become_password: "{{ domain | json_query(\"users[?name=='\" + user + \"'].password\") }}"

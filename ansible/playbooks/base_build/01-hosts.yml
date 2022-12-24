@@ -1,0 +1,23 @@
+- name: Local administrator's password
+  hosts: all
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/base_build/01-hosts/local_administrator_password
+  tags:
+    - local_administrator_password
+  gather_facts: false
+
+- name: Computer(s) host name
+  hosts: all
+  roles:
+    - role: ../../roles/base_build/01-hosts/computer_host_name
+  tags:
+    - computer_host_name
+  gather_facts: false
+
+- name: Windows updates
+  hosts: all
+  roles:
+    - role: ../../roles/base_build/01-hosts/windows_updates_off
+  gather_facts: false

@@ -1,0 +1,6 @@
+- name: block inbound/outbound IPv6 DHCP and router advertisement
+  ansible.windows.win_powershell:
+    script: |
+      Get-NetFirewallRule -DisplayName "Core Networking - Dynamic Host Configuration Protocol for IPv6(DHCPV6-In)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "Core Networking - Router Advertisement (ICMPv6-In)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "Core Networking - Dynamic Host Configuration Protocol for IPv6(DHCPV6-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"

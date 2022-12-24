@@ -1,0 +1,7 @@
+- name: ensure that the Admininistrator account is present with a valid password
+  win_user:
+    name: Administrator
+    password: "{{ item.local_administrator_password }}"
+    password_never_expires: yes
+    state: present
+  loop: "{{ domain.computers }}"

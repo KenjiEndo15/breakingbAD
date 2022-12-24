@@ -1,0 +1,20 @@
+- name: block outbound LLMNR packets
+  ansible.windows.win_powershell:
+    script: |
+      Get-NetFirewallRule -DisplayName "File and Printer Sharing (LLMNR-UDP-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "Network Discovery (LLMNR-UDP-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+
+- name: block outbound NBT-NS packets
+  ansible.windows.win_powershell:
+    script: |
+      Get-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Datagram-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Name-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "File and Printer Sharing (NB-Session-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "Network Discovery (NB-Datagram-Out)" | Where-Object { $_.Profile -eq "Any" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+
+- name: block outbound mDNS packets
+  ansible.windows.win_powershell:
+    script: |
+      Get-NetFirewallRule -DisplayName "mDNS (UDP-Out)" | Where-Object { $_.Profile -eq "Domain" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "mDNS (UDP-Out)" | Where-Object { $_.Profile -eq "Public" } | Set-NetFirewallRule -Action "Block" -Enabled "True"
+      Get-NetFirewallRule -DisplayName "mDNS (UDP-Out)" | Where-Object { $_.Profile -eq "Private" } | Set-NetFirewallRule -Action "Block" -Enabled "True"

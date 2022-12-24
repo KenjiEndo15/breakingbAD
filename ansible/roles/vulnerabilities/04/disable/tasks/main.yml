@@ -1,0 +1,24 @@
+- name: remove the Los Pollos Hermanos GPO
+  ansible.windows.win_powershell:
+    script: |
+      Remove-GPO -Name "Los Pollos Hermanos"
+
+- name: move srv01 to the Computers container
+  win_domain_computer:
+    name: srv01
+    dns_hostname: srv01.breakingbad.local
+    ou: CN=Computers,DC=breakingbad,DC=local
+
+- name: remove the Gustavo Fring user
+  win_domain_user:
+    name: gustavo.fring
+    state: absent
+
+# - name: remove the Cartel OU and the Gustavo Fring user
+#   community.windows.win_domain_user:
+#     name: Cartel
+#     path: DC=breakingbad,DC=local
+#     state: absent
+#     recursive: true
+#     domain_username: "{{ domain.administrator_name }}"
+#     domain_password: "{{ domain.administrator_password }}"

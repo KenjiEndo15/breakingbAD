@@ -1,0 +1,16 @@
+- name: stop the WebClient service
+  ansible.windows.win_powershell:
+    script: |
+      net stop webclient
+
+- name: uninstall the WebDAV Redirector
+  ansible.windows.win_feature:
+    name: WebDAV-Redirector
+    state: absent
+  register: reboot_webdav
+
+- name: reboot if the WebDAV Redirector has just been uninstalled
+  win_reboot:
+    reboot_timeout: 900
+    post_reboot_delay: 100
+  when: reboot_webdav.changed

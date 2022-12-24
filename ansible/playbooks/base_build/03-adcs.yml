@@ -1,0 +1,9 @@
+- name: Active Directory Certificate Services (ADCS)
+  hosts: dc01
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/base_build/03-adcs
+  tags:
+    - adcs
+  gather_facts: false

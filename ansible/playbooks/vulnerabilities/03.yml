@@ -1,0 +1,10 @@
+- name: WebClient
+  hosts: "{{ host_name | default('srv02') }}" # taken from the --extra-vars cli option
+  vars:
+    action: "{{ action }}" # taken from the --extra-vars cli option
+  roles:
+    - role: ../../roles/vulnerabilities/03/enable
+      when: action == 'enable'
+    - role: ../../roles/vulnerabilities/03/disable
+      when: action == 'disable'
+  gather_facts: false

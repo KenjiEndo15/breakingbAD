@@ -1,0 +1,12 @@
+- name: GPO
+  hosts: dc01
+  vars:
+    action: "{{ action }}"  # taken from the --extra-vars cli option
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/vulnerabilities/04/enable
+      when: action == 'enable'
+    - role: ../../roles/vulnerabilities/04/disable
+      when: action == 'disable'
+  gather_facts: false

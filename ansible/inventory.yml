@@ -1,0 +1,12 @@
+all:
+  children:
+    domain_controllers:
+      hosts:
+        dc01:
+          ansible_host: 192.168.56.10
+    servers:
+      hosts:
+        srv01:
+          ansible_host: 192.168.56.20
+        srv02:
+          ansible_host: 192.168.56.21

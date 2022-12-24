@@ -1,0 +1,45 @@
+- name: Domain creation
+  hosts: dc01
+  roles:
+    - role: ../../roles/base_build/02-adds/domain
+  vars_files:
+    - ../../vars/breakingbad.json
+  tags:
+    - domain_creation
+  gather_facts: false
+
+- name: DNS forwarder
+  hosts: dc01
+  roles:
+    - role: ../../roles/base_build/02-adds/dns
+  tags:
+    - dns_forwarder
+  gather_facts: false
+
+- name: Organizational units, groups and users
+  hosts: dc01
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles: 
+    - role: ../../roles/base_build/02-adds/ou_groups_users
+  tags:
+    - ou_groups_users
+  gather_facts: false
+
+- name: Domain membership
+  hosts: srv01, srv02
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/base_build/02-adds/domain_membership
+  tags:
+    - domain_membership
+  gather_facts: false
+
+- name: Resolve NIC teaming issues
+  hosts: dc01
+  roles:
+    - role: ../../roles/base_build/02-adds/nic_teaming
+  tags:
+    - nic_teaming
+  gather_facts: false

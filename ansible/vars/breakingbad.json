@@ -1,0 +1,61 @@
+{
+    "domain":{
+            "administrator_name"        : "Administrator",
+            "administrator_password"    : "Passw0rd!",
+            "domain_fqdn"               : "breakingbad.local",
+            "domain_netbios_name"       : "breakingbad",
+            "ca_name"                   : "breakingbad-ca",
+
+            "computers": [
+                {
+                    "name"                          : "dc01",
+                    "computer_fqdn"                 : "dc01.breakingbad.local",
+                    "local_administrator_password"  : "Passw0rd!"
+                },
+                {
+                    "name"                          : "srv01",
+                    "computer_fqdn"                 : "srv01.breakingbad.local",
+                    "local_administrator_password"  : "Passw0rd!"
+                },
+                {
+                    "name"                          : "srv02",
+                    "computer_fqdn"                 : "srv02.breakingbad.local",
+                    "local_administrator_password"  : "Passw0rd!"
+                }
+            ],
+
+            "organizational_units": [
+                {
+                    "name": "Cartel",
+                    "path": "DC=breakingbad,DC=local"
+                }
+            ],
+
+            "groups": [
+                {
+                    "name"  : "Methcooks",
+                    "scope" : "global",
+                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                }
+            ],
+
+            "users": [
+                {
+                    "name"          : "walter.white",
+                    "firstname"     : "Walter",
+                    "lastname"      : "White",
+                    "password"      : "Passw0rd!",
+                    "groups"        : ["Methcooks"],
+                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "jessie.pinkman",
+                    "firstname"     : "Jessie",
+                    "lastname"      : "Pinkman",
+                    "password"      : "Passw0rd!",
+                    "groups"        : ["Methcooks"],
+                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                }
+            ]
+    }
+}

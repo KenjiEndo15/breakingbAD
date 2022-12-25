@@ -1,0 +1,59 @@
+ID04 | GPO
+==========
+A GPO configured with over-permissive rights can be abused to push malicious tasks.
+
+**References**:
+
+* `WithSecure Labs`_ (SharpGPOAbuse)
+* `wald0.com`_ (A Red Teamers's Guide to GPOs and OUs)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 04 | GPO
+      - No
+      - Absent
+      - srv01 & gustavo.fring
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/04.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/04.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+A user called **gustavo.fring** is created an added to the **Cartel** organizational unit (OU).
+The machine **srv01** is also added to that OU. 
+A GPO called **Los Pollos Hermanos** is created and is applied to the OU (the GPO doesn't do anything).
+The OU's members have the `GpoEditDeleteModifySecurity`_ permission over the GPO (`04/enable/tasks/main.yml`_).
+
+Disable
+~~~~~~~
+The GPO **Los Pollos Hermanos** is deleted as well as the **gustavo.fring** user.
+Then the machine **srv01** is moved to the Computers container (`04/disable/tasks/main.yml`_).
+
+.. Hyperlinks
+.. _`WithSecure Labs`: https://labs.withsecure.com/tools/sharpgpoabuse
+.. _`wald0.com`: https://wald0.com/?p=179
+.. _`GpoEditDeleteModifySecurity`: https://learn.microsoft.com/en-us/previous-versions/windows/desktop/wmi_v2/class-library/gppermissiontype-enumeration-microsoft-grouppolicy
+.. _`04/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/04/enable/tasks/main.yml
+.. _`04/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/04/disable/tasks/main.yml

@@ -50,7 +50,3 @@ Python & Ansible
 .. tip::
 
     To deactivate the virtual environment, just type in the terminal: ``deactivate``.
-
-What's next?
-------------
-To launch the laboratory, see :doc:`Launch </getting-started/launch>`.

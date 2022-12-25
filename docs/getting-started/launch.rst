@@ -62,12 +62,12 @@ To better name a vulnerability related to dangerous AD configurations, **identif
 
 **Dangerous configurations**
 
-* **ID = 01** | ESC8 (see ID01)
-* **ID = 02** | NTLMv1 (see ID02)
-* **ID = 03** | WebClient (see ID03)
-* **ID = 04** | GPO abuse (see ID04)
-* **ID = 05** | IPv6 poisoning (see ID05)
-* **ID = 06** | LLMNR, NBT-NS & mDNS poisoning (see ID06)
+* **ID = 01** | ESC8
+* **ID = 02** | NTLMv1
+* **ID = 03** | WebClient
+* **ID = 04** | GPO
+* **ID = 05** | IPv6
+* **ID = 06** | LLMNR, NBT-NS & mDNS
 
 **Patch-related vulnerabilities**
 
@@ -86,16 +86,16 @@ To install all the vulnerabilities at once and without any customization, run th
     # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/vulnerabilities.yml --extra-vars "action=enable"
 
-For **ID05** (IPv6 poisoning) and **ID06** (LLMNR, NBT-NS & mDNS poisoning), you can trigger at lookup using the following commands.
+For **ID05** (IPv6) and **ID06** (LLMNR, NBT-NS & mDNS), you can trigger a lookup using the following commands.
 
-**ID05 - IPv6 poisoning**
+**ID05 - IPv6**
 
 .. code-block::
 
     # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=trigger"
 
-**ID06 - LLMNR, NBT-NS & mDNS poisoning**
+**ID06 - LLMNR, NBT-NS & mDNS**
 
 .. code-block::
 

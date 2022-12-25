@@ -1,0 +1,76 @@
+ID02 | NTLMv1
+=============
+NTLMv1 is an obsolete and highly vulnerable version of the NTLM authentication protocol.
+
+**References**:
+
+* `TrustedSec`_ (Practical Attacks against NTLMv1)
+* `praetorian`_ (NTLMv1 vs NTLMv2: Digging into an NTLM Downgrade attack)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 02 | NTLMv1
+      - No
+      - Absent
+      - srv01
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/02.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/02.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+NTLMv1 can be enabled locally or by GPO.
+For now, the local modification is used by modifying the registry.
+The ``lmcompatibilitylevel`` is set to 2, meaning NTLMv1 responses only are sent for clients (`02/enable/tasks/main.yml`_).
+
+.. tip::
+
+    If the value is 2 or below, NTLMv1 is used.
+
+Disable
+~~~~~~~
+By setting the ``lmcompatibilitylevel`` to 3, NTLMv2 responses only are sent for clients (`02/disable/tasks/main.yml`_).
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    host_name = dc01 | srv01 | srv02
+    action = enable | disable
+
+Example with **srv01**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/02.yml --extra-vars "action=enable host_name=srv01"
+
+.. Hyperlinks
+.. _`TrustedSec`: https://www.trustedsec.com/blog/practical-attacks-against-ntlmv1/
+.. _`praetorian`: https://www.praetorian.com/blog/ntlmv1-vs-ntlmv2/
+.. _`02/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/02/enable/tasks/main.yml
+.. _`02/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/02/disable/tasks/main.yml

@@ -20,8 +20,6 @@ As a pentester, a handy environment for testing purposes is key.
 I decided to dive into the creation of a laboratory in a similar way as `GOAD (Game of Active Directory)`_ was made.
 Since I wanted to customize as much as possible what I wanted to test, I decided to create breakingbAD for that matter.
 
-
-
 Do note that only **Windows machines** with **Active Directory** are used within the laboratory.
 
 Main credits
@@ -37,6 +35,8 @@ This is what I call a "**base build**".
 Once the base build is setup, machines are ready to receive vulnerabilities, **either one by one or all at once**.
 Adding vulnerabilities is not necessary, you may just want to have the necessary Active Directory dependencies (ADDS, ADCS...) to test your own stuff. 
 This idea of building a base independently was motivated by the need to have a plateform that is ready without having to wait for long.
+
+.. image:: /assests/base_build-vulnerabilities.png
 
 For each vulnerability, you'll have **at least 2 possibilities**.
 
@@ -77,3 +77,15 @@ The laboratory make use of the following tools:
 
    vulnerabilities/introduction
    vulnerabilities/id01
+   vulnerabilities/id02
+   vulnerabilities/id03
+   vulnerabilities/id04
+   vulnerabilities/id05
+   vulnerabilities/id06
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: LABORATORY
+
+   laboratory/content

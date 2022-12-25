@@ -1,0 +1,74 @@
+ID03 | WebClient
+================
+The WebClient service enable Windows-based programs to create, access and modify Internet-based files.
+It allows a client to connect to a WebDAV server but makes it vulnerable to a HTTP-based coercion using NTLM authentication.
+
+**References**:
+
+* `The Hacker Recipes`_ (WebClient abuse - WebDav)
+* `gladiatx0r Gist`_ (From RPC to RCE)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 03 | WebClient
+      - No
+      - Absent
+      - srv02
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/03.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/03.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+The WebClient service is not present in Windows Servers by default compared to workstations such as Windows 10.
+To make it available, the ``WebDAV-Redirector`` feature is installed, 
+which then enables the WebClient service. (`03/enable/tasks/main.yml`_).
+
+Disable
+~~~~~~~
+The WebClient service is stopped and the  WebClient service ``WebDAV-Redirector`` feature
+is uninstalled (`03/disable/tasks/main.yml`_).
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    host_name = dc01 | srv01 | srv02
+    action = enable | disable
+
+Example with **srv01**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/03.yml --extra-vars "action=enable host_name=srv01"
+
+.. Hyperlinks
+.. _`The Hacker Recipes`: https://www.thehacker.recipes/ad/movement/mitm-and-coerced-authentications/webclient
+.. _`gladiatx0r Gist`: https://gist.github.com/gladiatx0r/1ffe59031d42c08603a3bde0ff678feb
+.. _`03/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/03/enable/tasks/main.yml
+.. _`03/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/03/disable/tasks/main.yml

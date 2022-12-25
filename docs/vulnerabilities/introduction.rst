@@ -24,9 +24,9 @@ Here's a list:
 * **ID = 01** | ESC8
 * **ID = 02** | NTLMv1
 * **ID = 03** | WebClient
-* **ID = 04** | GPO abuse
-* **ID = 05** | IPv6 poisoning
-* **ID = 06** | LLMNR, NBT-NS & mDNS poisoning
+* **ID = 04** | GPO
+* **ID = 05** | IPv6
+* **ID = 06** | LLMNR, NBT-NS & mDNS
 
 Actions on vulnerabilities
 --------------------------
@@ -73,28 +73,28 @@ Table of availables actions, states, and targets
     * - Vulnerability ID
       - Trigger available
       - Default state
-      - Default target(s)
-    * - 01
+      - Default target
+    * - 01 | ESC8
       - No
       - Absent
-      - DC01
-    * - 02
+      - dc01
+    * - 02 | NTLMv1
       - No
       - Absent
-      - SRV01
-    * - 03
+      - srv01
+    * - 03 | WebClient
       - No
       - Absent
-      - SRV02
-    * - 04
+      - srv02
+    * - 04 | GPO
       - No
       - Absent
-      - SRV01 | gustavo.fring
-    * - 05
+      - srv01 & gustavo.fring
+    * - 05 | IPv6
       - Yes
       - Present
-      - SRV02
-    * - 06
+      - srv02
+    * - 06 | LLMNR, NBT-NS & mDNS
       - Yes
       - Present
-      - SRV02
+      - srv02 & walter.white

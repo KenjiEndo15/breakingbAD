@@ -1,14 +1,15 @@
 ID01 | ESC8
 ===========
-
 ESC stands for Escalation and is a misconfiguration on Active Directory Certificate Services (ADCS).
 It allows an individual in an AD setup to escalate their privilege.
 
 The ESC8 is well documented by Will Schroeder and Lee Christensen in their paper `Certified Pre-Owned`_.
 It focuses on the web enrollment HTTP/S endpoint allowing users to retrieve certificates (for example to authenticate in AD).
 
-.. Hyperlinks
-.. _`Certified Pre-Owned`: https://posts.specterops.io/certified-pre-owned-d95910965cd2
+**References**:
+
+* `The Hacker Recipes`_ (Web endpoints)
+* `HTTP418 INFOSEC`_ (ESC8 - NTLM Relay & HTTP Enrollment)
 
 Table of availables actions, states, and targets
 ------------------------------------------------
@@ -18,11 +19,11 @@ Table of availables actions, states, and targets
     * - Vulnerability ID
       - Trigger available
       - Default state
-      - Default target(s)
-    * - 01
+      - Default target
+    * - 01 | ESC8
       - No
       - Absent
-      - DC01
+      - dc01
 
 Launch
 ------
@@ -55,5 +56,8 @@ Disable
 The web enrollment is uninstalled using ``Uninstall-AdcsWebEnrollment`` (`01/disable/tasks/main.yml`_).
 
 .. Hyperlinks
+.. _`Certified Pre-Owned`: https://posts.specterops.io/certified-pre-owned-d95910965cd2
+.. _`The Hacker Recipes`: https://www.thehacker.recipes/ad/movement/ad-cs/web-endpoints
+.. _`HTTP418 INFOSEC`: https://http418infosec.com/ad-cs-the-certified-pre-owned-attacks#esc8
 .. _`01/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/01/enable/tasks/main.yml
 .. _`01/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/01/disable/tasks/main.yml

@@ -1,0 +1,96 @@
+ID05 | IPv6
+===========
+IPv6 is enabled by default and takes precedence of IPv4 for its DHCP and DNS.
+This allows poisoning of machines that look up for a DHCPv6 server (by setting ourselves as the DHCPv6 server).
+
+**References**:
+
+* `FOX IT`_ (mitm6 - compromising IPv4 networks via IPv6)
+* `crusher blog`_ (Combining NTLM Relaying and Kerberos delegation)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 05 | GPO
+      - Yes
+      - Present
+      - srv02
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=disable"
+
+Trigger
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=trigger"
+
+.. tip::
+
+  You may need to use this command multiple times if no poisoning is happening.
+
+Implementation
+--------------
+Enable
+~~~~~~
+IPv6 is enabled by default.
+To enable it back after disabling it, a set of firewall rules are enabled and set to ``Allow`` (`05/enable/tasks/main.yml`_).
+
+Disable
+~~~~~~~
+A set of firewall rules are enabled and set to ``Block`` (`05/disable/tasks/main.yml`_).
+
+Trigger
+~~~~~~~
+The target machine is restarted so that an IPv6 lookup can be triggered.
+A DHCPv6 server can then pick on any IPv6 solicitation.
+
+**Note**: restarting the server is (for now) the most efficient way I found to trigger IPv6 lookups (`05/trigger/tasks/main.yml`_).
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    host_name = srv01 | srv02
+    action = enable | disable | trigger
+
+.. caution::
+
+    Setting **dc01** in the ``host_name`` variable is not recommended as it would break Active Directory,
+    and fail interesting attacks on IPv6.
+
+Example with **srv01**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=trigger host_name=srv01"
+
+.. Hyperlinks
+.. _`FOX IT`: https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/
+.. _`crusher blog`: https://chryzsh.github.io/relaying-delegation/
+.. _`05/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/05/enable/tasks/main.yml
+.. _`05/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/05/disable/tasks/main.yml
+.. _`05/trigger/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/05/trigger/tasks/main.yml

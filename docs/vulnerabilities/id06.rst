@@ -1,0 +1,93 @@
+ID06 | LLMNR, NBT-NS & mDNS
+===========================
+LLMNR, NBT-NS & mDNS are enabled by default and may lead to the poisoning of their requests.
+
+**References**:
+
+* `The Hacker Recipes`_ (LLMNR, NBT-NS, mDNS spoofing)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 06 | LLMNR, NBT-NS & mDNS
+      - Yes
+      - Present
+      - srv02 & walter.white
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=disable"
+
+Trigger
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=trigger"
+
+.. tip::
+
+  You may need to use this command multiple times if no poisoning is happening.
+
+Implementation
+--------------
+Enable
+~~~~~~
+LLMNR, NBT-NS & mDNS are enabled by default.
+To enable it back after disabling it, a set of firewall rules are enabled and set to ``Allow`` (`06/enable/tasks/main.yml`_).
+
+Disable
+~~~~~~~
+A set of firewall rules are enabled and set to ``Block`` (`06/disable/tasks/main.yml`_).
+
+Trigger
+~~~~~~~
+The **walter.white** user is connected to **srv02** 
+and searches for an inexistent SMB share called **made-by-walter-white**.
+
+This triggers an LLMNR, NBT-NS & mDNS resolution (`06/trigger/tasks/main.yml`_:).
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    host_name = dc01 | srv01 | srv02
+    user_name = walter.white | jessie.pinkman
+    action = enable | disable | trigger
+
+.. caution::
+
+  The ``user_name`` and ``share_name`` variables work only with the ``trigger`` action.
+
+Example with **srv01**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=trigger host_name=srv01 user_name=jessie.pinkman share_name=yeah-science"
+
+.. Hyperlinks
+.. _`The Hacker Recipes`: https://www.thehacker.recipes/ad/movement/mitm-and-coerced-authentications/llmnr-nbtns-mdns-spoofing
+.. _`06/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/06/enable/tasks/main.yml
+.. _`06/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/06/disable/tasks/main.yml
+.. _`06/trigger/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/06/trigger/tasks/main.yml

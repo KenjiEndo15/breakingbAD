@@ -44,7 +44,7 @@ See [installation](https://github.com/KenjiEndo15/breakingbAD/wiki/Installation)
 ### Launching the laboratory
 See [launch](https://github.com/KenjiEndo15/breakingbAD/wiki/Launch).
 
-### Understanding and running the vulnerabilities
+### Running the vulnerabilities
 See [vulnerabilities](https://github.com/KenjiEndo15/breakingbAD/wiki/Vulnerabilities).
 
 ## Documentation

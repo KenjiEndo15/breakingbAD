@@ -1,5 +1,5 @@
 Content
-==========
+========
 The laboratory is composed of different components such as data related to the domain, boxes...
 
 Variable file

@@ -76,3 +76,4 @@ The laboratory make use of the following tools:
    :caption: VULNERABILITIES
 
    vulnerabilities/introduction
+   vulnerabilities/id01

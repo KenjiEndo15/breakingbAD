@@ -36,7 +36,7 @@ The format is as below.
 
 .. code-block::
 
-    ansible-playbook -i inventory.yml playbooks/vulnerabilities/<id?>.yml --extra-vars "action=<enable | disable | trigger>"
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/<id?>.yml --extra-vars "action=<enable|disable|trigger>"
 
 Some configurations can make a system vulnerable, even though some of them are **by default**.
 Therefore, running ``enable`` won't have any effect if it's run before ``disable``.
@@ -55,29 +55,46 @@ Trigger
 ~~~~~~~
 To observe any reaction from a vulnerability, we can trigger it.
 
-Table of availables actions and states
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Targets
+-------
+A default set of machines and users are targeted for the configuration vulnerabilities.
+You can choose these targets independently with ``extra-vars`` (more on that in the vulnerabilities sections).
+
+.. caution::
+
+  Some objects such as users can be absent from the base build.
+  They could be created specifically when a vulnerability is enabled.
+
+Table of availables actions, states, and targets
+------------------------------------------------
 .. list-table::
     :header-rows: 1
 
     * - Vulnerability ID
       - Trigger available
       - Default state
+      - Default target(s)
     * - 01
       - No
       - Absent
+      - DC01
     * - 02
       - No
       - Absent
+      - SRV01
     * - 03
       - No
       - Absent
+      - SRV02
     * - 04
       - No
       - Absent
+      - SRV01 | gustavo.fring
     * - 05
       - Yes
       - Present
+      - SRV02
     * - 06
       - Yes
       - Present
+      - SRV02

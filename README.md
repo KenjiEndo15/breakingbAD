@@ -20,17 +20,17 @@ The laboratory contains dangerous AD configurations as well as Windows vulnerabi
 To better name a vulnerability related to dangerous AD configurations, identifiers are used.
 
 #### Dangerous configurations
-- [X] ID = 01 | ESC8 (see ID01)
-- [X] ID = 02 | NTLMv1 (see ID02)
-- [X] ID = 03 | WebClient (see ID03)
-- [X] ID = 04 | GPO abuse (see ID04)
-- [X] ID = 05 | IPv6 poisoning (see ID05)
-- [X] ID = 06 | LLMNR, NBT-NS & mDNS poisoning (see ID06)
+- ID = 01 | ESC8 (see ID01)
+- ID = 02 | NTLMv1 (see ID02)
+- ID = 03 | WebClient (see ID03)
+- ID = 04 | GPO abuse (see ID04)
+- ID = 05 | IPv6 poisoning (see ID05)
+- ID = 06 | LLMNR, NBT-NS & mDNS poisoning (see ID06)
 
 #### Patch-related vulnerabilities
-- [X] sAMAccountName spoofing
-- [X] ZeroLogon
-- [X] Certifried
+- sAMAccountName spoofing
+- ZeroLogon
+- Certifried
 
 ### Machines
 Currently, the 3 machines used are Windows Server 2019. The images are taken from [StefanScherer in version 2019.05.22](https://app.vagrantup.com/StefanScherer/boxes/windows_2019/versions/2019.05.15).

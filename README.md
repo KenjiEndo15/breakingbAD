@@ -37,5 +37,15 @@ Currently, the 3 machines used are Windows Server 2019. The images are taken fro
 
 ![image](https://user-images.githubusercontent.com/109678331/209454074-4e1ddfb5-0087-4dee-9591-0cec5cda053c.png)
 
+## Content
+### Installation
+See installation.
+
+### Launching the laboratory
+See launch.
+
+### Understanding and running the vulnerabilities
+See vulnerabilities.
+
 ## Documentation
 See the [Wiki](https://github.com/KenjiEndo15/breakingbAD/wiki) (currently in the making) for full documentation, examples, tips, etc.

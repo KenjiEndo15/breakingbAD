@@ -1,3 +1,3 @@
 .. breakingbAD documentation master index file
 
-Test.
+:: image:: /assets/banner.png

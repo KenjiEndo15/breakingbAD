@@ -83,6 +83,7 @@ To install all the vulnerabilities at once and without any customization, run th
 
 .. code-block::
 
+    # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/vulnerabilities.yml --extra-vars "action=enable"
 
 For **ID05** (IPv6 poisoning) and **ID06** (LLMNR, NBT-NS & mDNS poisoning), you can trigger at lookup using the following commands.
@@ -91,10 +92,12 @@ For **ID05** (IPv6 poisoning) and **ID06** (LLMNR, NBT-NS & mDNS poisoning), you
 
 .. code-block::
 
+    # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=trigger"
 
 **ID06 - LLMNR, NBT-NS & mDNS poisoning**
 
 .. code-block::
 
+    # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=trigger"

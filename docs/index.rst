@@ -61,7 +61,7 @@ The laboratory make use of the following tools:
 .. _`Ansible`: https://www.ansible.com/
 .. _`VirtualBox`: https://www.virtualbox.org/
 
-.. Table of content
+.. Tables of content
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -69,3 +69,10 @@ The laboratory make use of the following tools:
 
    getting-started/installation
    getting-started/launch
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: VULNERABILITIES
+
+   vulnerabilities/introduction

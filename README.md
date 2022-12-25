@@ -39,13 +39,13 @@ Currently, the 3 machines used are Windows Server 2019. The images are taken fro
 
 ## Content
 ### Installation
-See installation.
+See [installation](https://github.com/KenjiEndo15/breakingbAD/wiki/Installation).
 
 ### Launching the laboratory
-See launch.
+See [launch](https://github.com/KenjiEndo15/breakingbAD/wiki/Launch).
 
 ### Understanding and running the vulnerabilities
-See vulnerabilities.
+See [vulnerabilities](https://github.com/KenjiEndo15/breakingbAD/wiki/Vulnerabilities).
 
 ## Documentation
 See the [Wiki](https://github.com/KenjiEndo15/breakingbAD/wiki) (currently in the making) for full documentation, examples, tips, etc.

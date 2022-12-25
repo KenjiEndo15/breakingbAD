@@ -1,3 +1,3 @@
 .. breakingbAD documentation master index file
 
-:: image:: /assets/banner.png
+:: image:: https://raw.githubusercontent.com/KenjiEndo15/breakingbAD/main/docs/assests/banner.png

@@ -87,15 +87,13 @@ To install all the vulnerabilities at once and without any customization, run th
 
 For **ID05** (IPv6 poisoning) and **ID06** (LLMNR, NBT-NS & mDNS poisoning), you can trigger at lookup using the following commands.
 
-ID05 - IPv6 poisoning
-^^^^^^^^^^^^^^^^^^^^^
+**ID05 - IPv6 poisoning**
 
 .. code-block::
 
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/05.yml --extra-vars "action=trigger"
 
-ID06 - LLMNR, NBT-NS & mDNS poisoning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**ID06 - LLMNR, NBT-NS & mDNS poisoning**
 
 .. code-block::
 

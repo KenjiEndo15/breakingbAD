@@ -14,6 +14,8 @@ About breakingbAD
 breakingbAD is a plateform for cybersecurity enthusiasts to conduct vulnerability research in an easy and fast way.
 The current laboratory is Active Directory oriented.
 
+`breakingbAD GitHub repository`_.
+
 Motivation
 ----------
 As a pentester, a handy environment for testing purposes is key.
@@ -54,6 +56,7 @@ The laboratory make use of the following tools:
 * `VirtualBox`_
 
 .. Hyperlinks
+.. _`breakingbAD GitHub repository`: https://github.com/KenjiEndo15/breakingbAD
 .. _`GOAD (Game of Active Directory)`: https://github.com/Orange-Cyberdefense/GOAD
 .. _`Mayfly`: https://github.com/Mayfly277
 .. _`Python`: https://www.python.org/

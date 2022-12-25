@@ -6,3 +6,5 @@ python/venv
 python/pyvenv.cfg
 
 vagrant/.vagrant
+
+docs/

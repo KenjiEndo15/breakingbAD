@@ -1,7 +1,9 @@
 ID03 | WebClient
 ================
-The WebClient service enable Windows-based programs to create, access and modify Internet-based files.
-It allows a client to connect to a WebDAV server but makes it vulnerable to a HTTP-based coercion using NTLM authentication.
+The WebClient service enable Windows-based programs to create,
+access and modify Internet-based files.
+It allows a client to connect to a WebDAV server but makes it
+vulnerable to a HTTP-based coercion using NTLM authentication.
 
 **References**:
 
@@ -42,14 +44,23 @@ Implementation
 --------------
 Enable
 ~~~~~~
-The WebClient service is not present in Windows Servers by default compared to workstations such as Windows 10.
+The WebClient service is not present on Windows Servers by default
+compared to workstations such as Windows 10.
 To make it available, the ``WebDAV-Redirector`` feature is installed, 
-which then enables the WebClient service. (`03/enable/tasks/main.yml`_).
+which then enables the WebClient service.
+
+Reference:
+
+* `03/enable/tasks/main.yml`_
 
 Disable
 ~~~~~~~
-The WebClient service is stopped and the  WebClient service ``WebDAV-Redirector`` feature
-is uninstalled (`03/disable/tasks/main.yml`_).
+The WebClient service is stopped and the WebClient service ``WebDAV-Redirector`` feature
+is uninstalled.
+
+Reference:
+
+* `03/disable/tasks/main.yml`_
 
 Customization
 -------------

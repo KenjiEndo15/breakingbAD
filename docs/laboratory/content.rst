@@ -1,11 +1,13 @@
 Content
-========
-The laboratory is composed of different components such as data related to the domain, boxes...
+=======
+The laboratory is composed of different components such as
+data related to the domain, boxes...
 
 Variable file
 -------------
 A variable file is used in Ansible. 
-It currently contains the data for a single domain called breakingbad (`/ansible/vars/breakingbad.json`_).
+It currently contains the data for a single domain called
+breakingbad (`/ansible/vars/breakingbad.json`_).
 
 Domain
 ~~~~~~
@@ -78,7 +80,7 @@ Users, groups and organization units
 Boxes
 -----
 Vagrant is used in the project to retreive an image for the OS.
-Once the image is retreived, linked clones are created based on a master.
+Once the image is retrieved, linked clones are created based on a master.
 
 .. list-table::
     :header-rows: 1

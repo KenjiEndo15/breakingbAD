@@ -13,12 +13,9 @@ Running the machines
     # Current directory: vagrant
     vagrant up
 
-Halting the machines
-~~~~~~~~~~~~~~~~~~~~
-.. code-block::
+.. tip::
 
-    # Current directory: vagrant
-    vagrant halt
+    To stop the virtual machines, use ``vagrant halt`` in the same directory.
 
 Ansible
 -------
@@ -41,11 +38,11 @@ DNS lookups
 ~~~~~~~~~~~
 You may need to modify your host configuration for any DNS lookups you are likely to make.
 
-I personally use a docker container (with Kali Linux) that holds the following configuration.
+I personally use a docker container (`Exegol`_) that holds the following configuration.
 
 .. code-block::
 
-    # Current file: /etc/Hosts
+    # Current file: /etc/hosts
     192.168.56.10 breakingbad.local
 
 .. code-block::
@@ -75,8 +72,6 @@ To better name a vulnerability related to dangerous AD configurations, **identif
 * ZeroLogon
 * Certifried
 
-See Patch-related vulnerabilities.
-
 Installation
 ~~~~~~~~~~~~
 To install all the vulnerabilities at once and without any customization, run the following command.
@@ -85,6 +80,15 @@ To install all the vulnerabilities at once and without any customization, run th
 
     # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/vulnerabilities.yml --extra-vars "action=enable"
+
+.. tip::
+
+    To disable them all, run the following command.
+
+    .. code-block::
+        
+        # Current directory: ansible
+        ansible-playbook -i inventory.yml playbooks/vulnerabilities/vulnerabilities.yml --extra-vars "action=disable"        
 
 For **ID05** (IPv6) and **ID06** (LLMNR, NBT-NS & mDNS), you can trigger a lookup using the following commands.
 
@@ -101,3 +105,6 @@ For **ID05** (IPv6) and **ID06** (LLMNR, NBT-NS & mDNS), you can trigger a looku
 
     # Current directory: ansible
     ansible-playbook -i inventory.yml playbooks/vulnerabilities/06.yml --extra-vars "action=trigger"
+
+.. Hyperlinks
+.. _`Exegol`: https://github.com/ThePorgs/Exegol

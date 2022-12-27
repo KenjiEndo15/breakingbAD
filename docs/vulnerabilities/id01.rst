@@ -3,7 +3,7 @@ ID01 | ESC8
 ESC stands for Escalation and is a misconfiguration on Active Directory Certificate Services (ADCS).
 It allows an individual in an AD setup to escalate their privilege.
 
-The ESC8 is well documented by Will Schroeder and Lee Christensen in their paper `Certified Pre-Owned`_.
+ESC8 is well documented by Will Schroeder and Lee Christensen in their paper `Certified Pre-Owned`_.
 It focuses on the web enrollment HTTP/S endpoint allowing users to retrieve certificates (for example to authenticate in AD).
 
 **References**:
@@ -45,15 +45,23 @@ Implementation
 --------------
 Enable
 ~~~~~~
-The web enrollment is installed using ``Install-AdcsWebEnrollment`` (`01/enable/tasks/main.yml`_).
+The web enrollment is installed using ``Install-AdcsWebEnrollment``.
 
 .. tip::
 
     By default, HTTP is used for the website.
 
+Reference:
+
+* `01/enable/tasks/main.yml`_
+
 Disable
 ~~~~~~~
-The web enrollment is uninstalled using ``Uninstall-AdcsWebEnrollment`` (`01/disable/tasks/main.yml`_).
+The web enrollment is uninstalled using ``Uninstall-AdcsWebEnrollment``.
+
+Reference:
+
+* `01/disable/tasks/main.yml`_
 
 .. Hyperlinks
 .. _`Certified Pre-Owned`: https://posts.specterops.io/certified-pre-owned-d95910965cd2

@@ -43,13 +43,23 @@ Enable
 ~~~~~~
 A user called **gustavo.fring** is created an added to the **Cartel** organizational unit (OU).
 The machine **srv01** is also added to that OU. 
-A GPO called **Los Pollos Hermanos** is created and is applied to the OU (the GPO doesn't do anything).
-The OU's members have the `GpoEditDeleteModifySecurity`_ permission over the GPO (`04/enable/tasks/main.yml`_).
+A GPO called **Los Pollos Hermanos** is created and is applied
+to the OU (the GPO doesn't do anything).
+The OU's members have the `GpoEditDeleteModifySecurity`_ permission
+over the GPO. 
+
+Reference:
+
+* `04/enable/tasks/main.yml`_
 
 Disable
 ~~~~~~~
 The GPO **Los Pollos Hermanos** is deleted as well as the **gustavo.fring** user.
-Then the machine **srv01** is moved to the Computers container (`04/disable/tasks/main.yml`_).
+Then the machine **srv01** is moved to the Computers container
+
+Reference:
+
+* `04/disable/tasks/main.yml`_
 
 .. Hyperlinks
 .. _`WithSecure Labs`: https://labs.withsecure.com/tools/sharpgpoabuse

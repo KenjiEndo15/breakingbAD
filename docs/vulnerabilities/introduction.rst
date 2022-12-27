@@ -1,24 +1,32 @@
 Introduction
 ===============
-The laboratory contains configurations vulnerabilities as well as the ones related to patching.
+The laboratory contains configurations vulnerabilities as well
+as the ones related to patching.
 
 **Configuration vulnerabilities**
 
-A configuration vulnerability, as it says, relates to a dangerous configuration introducing a vulnerability.
-I use the word "configuration" as a broad term as opposite to a patch-related vulnerability.
+A configuration vulnerability, as it says, relates to
+a dangerous configuration introducing a vulnerability.
+I use the word "configuration" as a broad term as
+opposite to a patch-related vulnerability.
 
-**Example**: enabling NTLMv1 authentication for a client makes it highly vulnerable (see ID02).
+**Example**: enabling NTLMv1 authentication for a client makes it highly
+vulnerable (see :doc:`/vulnerabilities/id02`).
 
 **Patch-related vulnerabilities**
 
-The machines' version can be carefuly chosen so that some vulnerabilities are already present.
+The machines' version can be carefuly chosen so that some
+vulnerabilities are already present.
 
-**Example**: ZeroLogon on a domain controller makes the whole domain vulnerable to a complete take-over.
-This vulnerability has been patched a while ago and it not related to any misconfiguration.
+**Example**: ZeroLogon on a domain controller makes the whole
+domain vulnerable to a complete take-over.
+This vulnerability has been patched a while ago and it not
+related to any misconfiguration.
 
 Identifiers
 -----------
-In order to avoid lengthy or inaccurate file titles, identifiers are used for configuration vulnerabilities.
+In order to avoid lengthy or inaccurate file titles, identifiers
+are used for configuration vulnerabilities.
 Here's a list:
 
 * **ID = 01** | ESC8
@@ -31,7 +39,8 @@ Here's a list:
 Actions on vulnerabilities
 --------------------------
 A vulnerability can have **at least 2** actions: enable, disable and trigger.
-To perform any of these actions, we run a playbook that takes a variable as input (called ``extra-vars``).
+To perform any of these actions, we run a playbook that takes a variable
+as input (called ``extra-vars``).
 The format is as below.
 
 .. code-block::
@@ -58,13 +67,13 @@ To observe any reaction from a vulnerability, we can trigger it.
 Targets
 -------
 A default set of machines and users are targeted for the configuration vulnerabilities.
-You can choose these targets independently with ``extra-vars`` (more on that in the vulnerabilities sections).
+You can choose these targets independently with ``extra-vars``
+(more on each vulnerabilities' own section).
 
 .. caution::
 
-  Some objects such as users can be absent from the base build.
-  They could be created specifically when a vulnerability is enabled.
-
+  Some objects such as users will be created only after a vulnerability was enabled.
+  
 Table of availables actions, states, and targets
 ------------------------------------------------
 .. list-table::

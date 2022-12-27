@@ -52,18 +52,31 @@ Implementation
 Enable
 ~~~~~~
 LLMNR, NBT-NS & mDNS are enabled by default.
-To enable it back after disabling it, a set of firewall rules are enabled and set to ``Allow`` (`06/enable/tasks/main.yml`_).
+To enable it back after disabling it, a set of firewall rules are
+enabled and set to ``Allow``. 
+
+Reference:
+
+* `06/enable/tasks/main.yml`_
 
 Disable
 ~~~~~~~
-A set of firewall rules are enabled and set to ``Block`` (`06/disable/tasks/main.yml`_).
+A set of firewall rules are enabled and set to ``Block``.
+
+Reference:
+
+* `06/disable/tasks/main.yml`_
 
 Trigger
 ~~~~~~~
-The **walter.white** user is connected to **srv02** 
+The **walter.white** user connects to **srv02**
 and searches for an inexistent SMB share called **made-by-walter-white**.
 
-This triggers an LLMNR, NBT-NS & mDNS resolution (`06/trigger/tasks/main.yml`_:).
+This triggers an LLMNR, NBT-NS & mDNS resolution.
+
+Reference:
+
+* `06/trigger/tasks/main.yml`_
 
 Customization
 -------------
@@ -71,13 +84,11 @@ You can choose another target than the default one.
 
 .. code-block::
 
+    # Mandatory (with action = trigger)
     host_name = dc01 | srv01 | srv02
+    # Mandatory (with action = trigger)
     user_name = walter.white | jessie.pinkman
     action = enable | disable | trigger
-
-.. caution::
-
-  The ``user_name`` and ``share_name`` variables work only with the ``trigger`` action.
 
 Example with **srv01**:
 

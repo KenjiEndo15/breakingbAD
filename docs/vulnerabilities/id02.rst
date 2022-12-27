@@ -43,15 +43,23 @@ Enable
 ~~~~~~
 NTLMv1 can be enabled locally or by GPO.
 For now, the local modification is used by modifying the registry.
-The ``lmcompatibilitylevel`` is set to 2, meaning NTLMv1 responses only are sent for clients (`02/enable/tasks/main.yml`_).
+The ``lmcompatibilitylevel`` is set to 2, meaning NTLMv1 responses only are sent for clients.
 
 .. tip::
 
     If the value is 2 or below, NTLMv1 is used.
 
+Reference:
+
+* `02/enable/tasks/main.yml`_
+
 Disable
 ~~~~~~~
-By setting the ``lmcompatibilitylevel`` to 3, NTLMv2 responses only are sent for clients (`02/disable/tasks/main.yml`_).
+By setting the ``lmcompatibilitylevel`` to 3, NTLMv2 responses only are sent for clients.
+
+Reference:
+
+* `02/disable/tasks/main.yml`_
 
 Customization
 -------------

@@ -1,6 +1,7 @@
 Installation
 ============
-To make the laboratory work smoothly, we need to install the necessary dependencies described in this section.
+To make the laboratory work smoothly, 
+we need to install the dependencies described in this section.
 
 .. caution::
 
@@ -8,7 +9,8 @@ To make the laboratory work smoothly, we need to install the necessary dependenc
 
 Requirements
 ------------
-The following requirements were taken from my environment. I propose specific versions for the tools as I haven't had the time to experiment with different versions.
+The following requirements were taken from my environment.
+I propose specific versions for the tools as I haven't had the time to experiment with different versions.
 
 Please feel free to create a new issue if any installation step doesn't work for you.
 
@@ -27,12 +29,15 @@ Vagrant
 Python & Ansible
 ~~~~~~~~~~~~~~~~
 
+Python is used in version 3.10.6.
+
 .. code-block::
 
     # The python directory will store virtual environment data
     cd python
 
     # Creating a virtual environment
+    # sudo apt install python3.10-venv -y (if needed)
     python3 -m venv venv .
 
     # Activating it
@@ -41,7 +46,9 @@ Python & Ansible
     # Installing the required Python dependencies (ansible-core, pywinrm...)
     python3 -m pip install -r requirements.txt
 
-    # Switching to the Ansible directory
+.. code-block::
+
+    # Ansible directory (with the virtual environment activated)
     cd ansible
 
     # Installing the required Ansible dependencies

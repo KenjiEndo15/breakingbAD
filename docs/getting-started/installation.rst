@@ -17,6 +17,7 @@ Please feel free to create a new issue if any installation step doesn't work for
 VirtualBox
 ~~~~~~~~~~
 To install a specific version, you need to add VirtualBox repository.
+
 .. code-block::
 
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
@@ -34,6 +35,7 @@ Installing VirtualBox in version 6.1.
 Vagrant
 ~~~~~~~
 To install a specific version, you need to add Vagrant repository.
+
 .. code-block::
     
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg

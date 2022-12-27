@@ -51,7 +51,7 @@ The web enrollment is installed using ``Install-AdcsWebEnrollment``.
 
     By default, HTTP is used for the website.
 
-Reference:
+**Reference**:
 
 * `01/enable/tasks/main.yml`_
 
@@ -59,7 +59,7 @@ Disable
 ~~~~~~~
 The web enrollment is uninstalled using ``Uninstall-AdcsWebEnrollment``.
 
-Reference:
+**Reference**:
 
 * `01/disable/tasks/main.yml`_
 

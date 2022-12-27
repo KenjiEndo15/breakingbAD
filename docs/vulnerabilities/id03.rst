@@ -49,7 +49,7 @@ compared to workstations such as Windows 10.
 To make it available, the ``WebDAV-Redirector`` feature is installed, 
 which then enables the WebClient service.
 
-Reference:
+**Reference**:
 
 * `03/enable/tasks/main.yml`_
 
@@ -58,7 +58,7 @@ Disable
 The WebClient service is stopped and the WebClient service ``WebDAV-Redirector`` feature
 is uninstalled.
 
-Reference:
+**Reference**:
 
 * `03/disable/tasks/main.yml`_
 

@@ -63,7 +63,7 @@ Disable
 ~~~~~~~
 A set of firewall rules are enabled and set to ``Block``.
 
-Reference:
+**Reference**:
 
 * `06/disable/tasks/main.yml`_
 
@@ -74,7 +74,7 @@ and searches for an inexistent SMB share called **made-by-walter-white**.
 
 This triggers an LLMNR, NBT-NS & mDNS resolution.
 
-Reference:
+**Reference**:
 
 * `06/trigger/tasks/main.yml`_
 
@@ -84,9 +84,7 @@ You can choose another target than the default one.
 
 .. code-block::
 
-    # Mandatory (with action = trigger)
     host_name = dc01 | srv01 | srv02
-    # Mandatory (with action = trigger)
     user_name = walter.white | jessie.pinkman
     action = enable | disable | trigger
 

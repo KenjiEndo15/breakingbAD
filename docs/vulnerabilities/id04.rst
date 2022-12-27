@@ -48,7 +48,7 @@ to the OU (the GPO doesn't do anything).
 The OU's members have the `GpoEditDeleteModifySecurity`_ permission
 over the GPO. 
 
-Reference:
+**Reference**:
 
 * `04/enable/tasks/main.yml`_
 
@@ -57,7 +57,7 @@ Disable
 The GPO **Los Pollos Hermanos** is deleted as well as the **gustavo.fring** user.
 Then the machine **srv01** is moved to the Computers container
 
-Reference:
+**Reference**:
 
 * `04/disable/tasks/main.yml`_
 

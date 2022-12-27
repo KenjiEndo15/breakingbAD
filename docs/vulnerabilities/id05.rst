@@ -66,7 +66,7 @@ Disable
 ~~~~~~~
 A set of firewall rules are enabled and set to ``Block``.
 
-Reference:
+**Reference**:
 
 * `05/disable/tasks/main.yml`_
 
@@ -78,7 +78,7 @@ A DHCPv6 server can then pick on any IPv6 solicitation.
 **Note**: restarting the server is (for now) the most efficient way
 I found to trigger IPv6 lookups.
 
-Reference:
+**Reference**:
 
 * `05/enable/tasks/main.yml`_
 

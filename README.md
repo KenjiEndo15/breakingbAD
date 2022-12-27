@@ -33,7 +33,7 @@ To better name a vulnerability related to dangerous AD configurations, identifie
 - Certifried
 
 ### Machines
-Currently, the 3 machines used are Windows Server 2019. The images are taken from [StefanScherer in version 2019.05.22](https://app.vagrantup.com/StefanScherer/boxes/windows_2019/versions/2019.05.15).
+Currently, the 3 machines used are Windows Server 2019. The images are taken from [StefanScherer](https://app.vagrantup.com/StefanScherer/boxes/windows_2019/versions/2019.05.15) in version 2019.05.22.
 
 ![image](https://user-images.githubusercontent.com/109678331/209454074-4e1ddfb5-0087-4dee-9591-0cec5cda053c.png)
 

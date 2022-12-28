@@ -16,6 +16,14 @@
     - dns_forwarder
   gather_facts: false
 
+- name: Resolve NIC teaming issues (via DNS client requests)
+  hosts: dc01
+  roles:
+    - role: ../../roles/base_build/02-adds/dns_client_requests
+  tags:
+    - dns_client_requests
+  gather_facts: false
+
 - name: Organizational units, groups and users
   hosts: dc01
   vars_files:
@@ -34,12 +42,4 @@
     - role: ../../roles/base_build/02-adds/domain_membership
   tags:
     - domain_membership
-  gather_facts: false
-
-- name: Resolve NIC teaming issues
-  hosts: dc01
-  roles:
-    - role: ../../roles/base_build/02-adds/nic_teaming
-  tags:
-    - nic_teaming
   gather_facts: false

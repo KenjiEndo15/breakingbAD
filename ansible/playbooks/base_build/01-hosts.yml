@@ -21,3 +21,11 @@
   roles:
     - role: ../../roles/base_build/01-hosts/windows_updates_off
   gather_facts: false
+
+- name: Resolve NIC teaming issues (via address registration)
+  hosts: dc01
+  roles:
+    - role: ../../roles/base_build/01-hosts/address_registration
+  tags:
+    - address_registration
+  gather_facts: false

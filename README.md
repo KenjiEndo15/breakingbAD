@@ -35,5 +35,13 @@ To better name a vulnerability related to dangerous AD configurations, identifie
 ### Machines
 Currently, the 3 machines used are Windows Server 2019. The images are taken from [StefanScherer](https://app.vagrantup.com/StefanScherer/boxes/windows_2019/versions/2019.05.15) in version 2019.05.22.
 
+### Technologies used
+The laboratory make use of the following tools:
+
+- Python
+- Vagrant
+- Ansible
+- VirtualBox
+
 ## Getting started
 See [Read the Docs](https://breakingbad.readthedocs.io/en/latest/index.html)

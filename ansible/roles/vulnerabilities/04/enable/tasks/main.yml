@@ -1,4 +1,4 @@
-- name: add the user Gustavo Fring to the Cartel OU
+- name: create and add the user Gustavo Fring to the Cartel OU
   win_domain_user:
     password_never_expires: yes
     name: gustavo.fring
@@ -19,7 +19,7 @@
     ou: OU=Cartel,DC=breakingbad,DC=local
   ignore_errors: yes
 
-- name: create a Los Pollos Hermanos GPO
+- name: create a Los Pollos Hermanos GPO and add the GpoEditDeleteModifySecurity to the Authenticated Users' group
   ansible.windows.win_powershell:
     script: |
       New-Gpo -Name "Los Pollos Hermanos"

@@ -45,8 +45,8 @@ A user called **gustavo.fring** is created an added to the **Cartel** organizati
 The machine **srv01** is also added to that OU. 
 A GPO called **Los Pollos Hermanos** is created and is applied
 to the OU (the GPO doesn't do anything).
-The OU's members have the `GpoEditDeleteModifySecurity`_ permission
-over the GPO. 
+The **Authenticated Users**' group members have the `GpoEditDeleteModifySecurity`_ permission
+over the GPO.
 
 **Reference**:
 

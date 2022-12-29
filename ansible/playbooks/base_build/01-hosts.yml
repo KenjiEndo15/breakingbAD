@@ -22,10 +22,19 @@
     - role: ../../roles/base_build/01-hosts/windows_updates_off
   gather_facts: false
 
-- name: Resolve NIC teaming issues (via address registration and metric)
+- name: Resolve NIC teaming issues (via address registration)
   hosts: dc01
   roles:
-    - role: ../../roles/base_build/01-hosts/address_registration_metric
+    - role: ../../roles/base_build/01-hosts/address_registration
   tags:
-    - address_registration_metric
+    - address_registration
+  gather_facts: false
+
+
+- name: Resolve NIC teaming issues (via interface metrics)
+  hosts: srv01, srv02
+  roles:
+    - role: ../../roles/base_build/01-hosts/interface_metrics
+  tags:
+    - interface_metrics
   gather_facts: false

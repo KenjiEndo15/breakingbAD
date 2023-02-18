@@ -1,0 +1,7 @@
+- name: change the user's description by putting in their password
+  win_domain_user:
+    name: "{{ user }}"
+    description: "{{ password }}"
+  vars:
+    query_password: "users[?name=='{{ user }}'].password | [0]" # query for the variable "password"
+    password: "{{ domain | json_query(query_password) }}"

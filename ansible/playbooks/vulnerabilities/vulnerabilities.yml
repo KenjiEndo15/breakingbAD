@@ -4,3 +4,6 @@
 - import_playbook: 04.yml
 - import_playbook: 05.yml
 - import_playbook: 06.yml
+- import_playbook: 07.yml
+- import_playbook: 08.yml
+- import_playbook: 09.yml

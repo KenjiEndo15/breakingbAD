@@ -1,22 +1,35 @@
 {
     "domain":{
             "administrator_name"        : "Administrator",
-            "administrator_password"    : "Passw0rd!",
+            "administrator_password"    : "452dvcZ!",
+            "safe_mode_password"        : "944fgyV!",
             "domain_fqdn"               : "breakingbad.local",
             "domain_netbios_name"       : "breakingbad",
             "ca_name"                   : "breakingbad-ca",
+            "path"                      : "DC=breakingbad,DC=local",
+            "language"                  : "fr-FR",
 
             "organizational_units": [
                 {
                     "name": "Cartel",
-                    "path": "DC=breakingbad,DC=local"
+                    "path": "OU=Cartel,DC=breakingbad,DC=local"
                 }
             ],
 
             "groups": [
                 {
                     "name"  : "Methcooks",
-                    "scope" : "global",
+                    "scope" : "Global",
+                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"  : "Distributors",
+                    "scope" : "Global",
+                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"  : "Lawyers",
+                    "scope" : "Global",
                     "path"  : "OU=Cartel,DC=breakingbad,DC=local"
                 }
             ],
@@ -25,17 +38,20 @@
                 {
                     "name"                          : "dc01",
                     "computer_fqdn"                 : "dc01.breakingbad.local",
-                    "local_administrator_password"  : "Passw0rd!"
+                    "local_administrator_password"  : "452dvcZ!",
+                    "path"                          : "OU=Domain Controllers,DC=breakingbad,DC=local"
                 },
                 {
                     "name"                          : "srv01",
                     "computer_fqdn"                 : "srv01.breakingbad.local",
-                    "local_administrator_password"  : "Passw0rd!"
+                    "local_administrator_password"  : "132qxaQ!",
+                    "path"                          : "OU=Cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"                          : "srv02",
                     "computer_fqdn"                 : "srv02.breakingbad.local",
-                    "local_administrator_password"  : "Passw0rd!"
+                    "local_administrator_password"  : "645zmdF!",
+                    "path"                          : "CN=Computers,DC=breakingbad,DC=local"                    
                 }
             ],
 
@@ -44,7 +60,7 @@
                     "name"          : "walter.white",
                     "firstname"     : "Walter",
                     "lastname"      : "White",
-                    "password"      : "Passw0rd!",
+                    "password"      : "774azeG!",
                     "groups"        : ["Methcooks"],
                     "path"          : "OU=Cartel,DC=breakingbad,DC=local"
                 },
@@ -52,8 +68,32 @@
                     "name"          : "jessie.pinkman",
                     "firstname"     : "Jessie",
                     "lastname"      : "Pinkman",
-                    "password"      : "Passw0rd!",
+                    "password"      : "313lksV!",
                     "groups"        : ["Methcooks"],
+                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "saul.goodman",
+                    "firstname"     : "Saul",
+                    "lastname"      : "Goodman",
+                    "password"      : "657crsH!",
+                    "groups"        : ["Lawyers"],
+                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "gustavo.fring",
+                    "firstname"     : "Gustavo",
+                    "lastname"      : "Fring",
+                    "password"      : "659ldoK!",
+                    "groups"        : ["Distributors"],
+                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "hector.salamanca",
+                    "firstname"     : "Hector",
+                    "lastname"      : "Salamanca",
+                    "password"      : "346modL!",
+                    "groups"        : ["Distributors"],
                     "path"          : "OU=Cartel,DC=breakingbad,DC=local"
                 }
             ]

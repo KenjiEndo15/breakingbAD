@@ -1,0 +1,5 @@
+- name: enable Kerberos Pre-Authentication for a user
+  ansible.windows.win_shell:
+    Get-ADUser -Identity "{{ user }}" | Set-ADAccountControl -DoesNotRequirePreAuth:$false
+  vars:
+    user: user_name

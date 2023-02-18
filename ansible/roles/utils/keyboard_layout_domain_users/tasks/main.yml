@@ -1,0 +1,40 @@
+- name: create a directory with a Powershell script inside, then use the directory as an SMB share
+  ansible.windows.win_powershell:
+    script: |
+      New-Item -ItemType "Directory" -Name "{{ directory_name }}" -Path "{{ directory_root }}" -Force
+      New-Item -ItemType "File" -Name "{{ script_name }}" -Path "{{ directory_root }}{{ directory_name }}\" -Value "{{ script_content }}" -Force
+      New-SMBShare -Name "{{ share_name }}" -Path "{{ directory_root }}{{ directory_name }}" -ReadAccess "{{ read_access_principal }}"
+  vars:
+    directory_name: keyboard-layout\\
+    directory_root: "C:\\"
+    script_name: keyboard-layout.ps1
+    script_content: "Set-WinUserLanguageList -LanguageList {{ domain.language }} -Force"
+    share_name: keyboard-layout$
+    read_access_principal: Everyone
+
+- name: create a GPO, link it to the "breaking.bad" domain, and modify a registry key
+  ansible.windows.win_powershell:
+    script: |
+      New-Gpo -Name "{{ gpo_name }}"
+      New-GPLink -Name "{{ gpo_name }}" -Target "{{ link_name }}"
+      
+      $GPPrefRegistryValue = Get-GPPrefRegistryValue -Name "{{ gpo_name }}" -Context "{{ context }}" -Key "{{ registry_key }}" -ValueName "{{ value_name }}"
+      if($GPPrefRegistryValue) {
+        Remove-GPPrefRegistryValue -Name "{{ gpo_name }}" -Context {{ context }} -Key "{{ registry_key }}" -ValueName "{{ value_name }}"
+      }
+      Set-GPPrefRegistryValue -Name "{{ gpo_name }}" -Context {{ context }} -Key "{{ registry_key }}" -ValueName "{{ value_name }}" -Type "{{ type }}" -Value "{{ value }}" -Action "{{ action }}"
+  vars:
+    gpo_name: Keyboard Layout
+    link_name: DC=breakingbad,DC=local
+    context: User
+    registry_key: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+    value_name: KeyboardLayout
+    action: Update
+    type: String
+    value: "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\PowerShell.exe -File \\\\DC01\\keyboard-layout$\\keyboard-layout.ps1"
+    query_local_administrator_password: "computers[?name=='{{ host_name }}'].local_administrator_password | [0]" # query for the variable "password"
+    password: "{{ domain | json_query(query_local_administrator_password) }}"
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: Administrator
+    ansible_become_password: "{{ password }}"

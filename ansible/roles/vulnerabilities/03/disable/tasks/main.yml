@@ -11,6 +11,4 @@
 
 - name: reboot if the WebDAV Redirector has just been uninstalled
   win_reboot:
-    reboot_timeout: 900
-    post_reboot_delay: 100
   when: reboot_webdav.changed

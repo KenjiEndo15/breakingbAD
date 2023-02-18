@@ -1,5 +1,5 @@
 # Host
-host_name: DC01
+host_name: dc01
 host_ip: 192.168.56.10
 operating_system: windows
 
@@ -8,7 +8,7 @@ vagrant_box: StefanScherer/windows_2019
 vagrant_box_version: 2019.05.22
 
 # VirtualBox
-vbox_name: DC01
+vbox_name: dc01
 vbox_gui: false
 vbox_memory: 3000
 vbox_cpus: 2

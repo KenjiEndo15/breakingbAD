@@ -1,0 +1,19 @@
+- name: Keyboard layout
+  hosts: all
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/utils/keyboard_layout_local_users
+  tags:
+    - keyboard_layout_local_users
+  gather_facts: false
+
+- name: Keyboard layout
+  hosts: dc01
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - ../../roles/utils/keyboard_layout_domain_users
+  tags:
+    - keyboard_layout_domain_users
+  gather_facts: false

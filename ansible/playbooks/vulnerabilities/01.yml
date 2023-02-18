@@ -1,10 +1,12 @@
 - name: ADCS web enrollement
   hosts: dc01
   vars:
-    action: "{{ action }}" # taken from the --extra-vars cli option
+    action: "{{ action }}" # extra-vars
+
   roles:
     - role: ../../roles/vulnerabilities/01/enable
-      when: action == 'enable'
+      when: action == "enable"
+
     - role: ../../roles/vulnerabilities/01/disable
-      when: action == 'disable'
+      when: action == "disable"   
   gather_facts: false

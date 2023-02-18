@@ -1,0 +1,18 @@
+- name: SPN on a user
+  hosts: dc01
+  vars:
+    action: "{{ action }}" # extra-vars
+  vars_files:
+    - ../../vars/breakingbad.json
+
+  roles:
+    - role: ../../roles/vulnerabilities/08/enable
+      when: action == 'enable'
+      user: "{{ user_name | default('hector.salamanca', true) }}" # extra-vars
+      spn: "{{ spn_name | default('HTTP/srv01', true) }}" # extra-vars
+
+    - role: ../../roles/vulnerabilities/08/disable
+      when: action == 'disable'
+      user: "{{ user_name | default('hector.salamanca', true) }}" # extra-vars
+      spn: "{{ spn_name | default('HTTP/srv01', true) }}" # extra-vars
+  gather_facts: false

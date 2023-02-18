@@ -1,0 +1,6 @@
+- name: add SPN to the target user
+  win_domain_user:
+    name: "{{ user }}"
+    spn_action: add
+    spn: 
+      - "{{ spn }}"

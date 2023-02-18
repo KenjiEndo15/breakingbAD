@@ -1,16 +1,21 @@
-- name: LLMNR, NBT-NS & mDNS poisoning
-  hosts: "{{ host_name | default('srv02', true) }}" # taken from the --extra-vars cli option
+- name: LLMNR, NBT-NS and/or mDNS poisoning
+  hosts: "{{ host_name | default('srv02', true) }}" # extra-vars
   vars:
-    action: "{{ action }}" # taken from the --extra-vars cli option
+    action: "{{ action }}" # extra-vars
   vars_files:
     - ../../vars/breakingbad.json
+
   roles:
     - role: ../../roles/vulnerabilities/06/enable
-      when: action == 'enable'
+      when: action == "enable"
+      protocol: "{{ protocol_name | default('all', true) }}" # extra-vars
+
     - role: ../../roles/vulnerabilities/06/disable
-      when: action == 'disable'
+      when: action == "disable"
+      protocol: "{{ protocol_name | default('all', true) }}" # extra-vars
+
     - role: ../../roles/vulnerabilities/06/trigger
-      when: action == 'trigger'
-      user: "{{ user_name | default('walter.white', true) }}" # taken from the --extra-vars cli option
-      share: "{{ share_name | default('made-by-walter-white', true) }}" # taken from the --extra-vars cli option
+      when: action == "trigger"
+      user: "{{ user_name | default('walter.white', true) }}" # extra-vars
+      share: "{{ share_name | default('share-search-walter-white', true) }}" # extra-vars
   gather_facts: false

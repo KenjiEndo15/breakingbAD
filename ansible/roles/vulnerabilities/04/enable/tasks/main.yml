@@ -1,27 +1,14 @@
-- name: create and add the user Gustavo Fring to the Cartel OU
-  win_domain_user:
-    password_never_expires: yes
-    name: gustavo.fring
-    firstname: Gustavo
-    lastname: Fring
-    password: Passw0rd!
-    path: OU=Cartel,DC=breakingbad,DC=local
-    domain_username: "{{ domain.administrator_name }}"
-    domain_password: "{{ domain.administrator_password }}"
-  ignore_errors: yes
-
-- name: add the computer srv01 to the Cartel OU
-  win_domain_computer:
-    name: srv01
-    dns_hostname: srv01.breakingbad.local
-    domain_username: "{{ domain.administrator_name }}"
-    domain_password: "{{ domain.administrator_password }}"
-    ou: OU=Cartel,DC=breakingbad,DC=local
-  ignore_errors: yes
-
-- name: create a Los Pollos Hermanos GPO and add the GpoEditDeleteModifySecurity to the Authenticated Users' group
-  ansible.windows.win_powershell:
-    script: |
-      New-Gpo -Name "Los Pollos Hermanos"
-      New-GPLink -Name "Los Pollos Hermanos" -Target "OU=Cartel,DC=breakingbad,DC=local"
-      Set-GPPermissions -Name "Los Pollos Hermanos" -PermissionLevel GpoEditDeleteModifySecurity -TargetName "Authenticated Users" -TargetType group
+- name: create a GPO, link it to an OU and set permissions for a specific target
+  ansible.windows.win_shell: |
+    New-GPO -Name "{{ gpo }}"
+    New-GPLink -Name "{{ gpo }}" -Target "{{ oupath }}"
+    Set-GPPermissions -Name "{{ gpo }}" -PermissionLevel "{{ permissionlevel }}" -TargetName "{{ targetname }}" -TargetType "{{ targettype }}"
+  vars:
+    query_path: "organizational_units[?name=='{{ ou }}'].path | [0]" # query for the variable "oupath"
+    oupath: "{{ domain | json_query(query_path) }}"
+    query_local_administrator_password: "computers[?name=='{{ host_name }}'].local_administrator_password | [0]" # query for the variable "password"
+    password: "{{ domain | json_query(query_local_administrator_password) }}"
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: Administrator
+    ansible_become_password: "{{ password }}"

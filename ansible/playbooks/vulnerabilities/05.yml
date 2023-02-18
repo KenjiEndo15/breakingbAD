@@ -1,12 +1,15 @@
 - name: IPv6 poisoning
-  hosts: "{{ host_name | default('srv02', true) }}" # taken from the --extra-vars cli option
+  hosts: "{{ host_name | default('srv02', true) }}" # extra-vars
   vars:
-    action: "{{ action }}" # taken from the --extra-vars cli option
+    action: "{{ action }}" # extra-vars
+    
   roles:
     - role: ../../roles/vulnerabilities/05/enable
-      when: action == 'enable'
+      when: action == "enable"
+
     - role: ../../roles/vulnerabilities/05/disable
-      when: action == 'disable'
+      when: action == "disable"
+
     - role: ../../roles/vulnerabilities/05/trigger
-      when: action == 'trigger'
+      when: action == "trigger"
   gather_facts: false

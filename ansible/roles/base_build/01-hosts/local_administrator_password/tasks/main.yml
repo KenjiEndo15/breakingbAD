@@ -1,7 +1,8 @@
-- name: ensure that the Admininistrator account is present with a valid password
+- name: change the Admininistrator account's password
   win_user:
     name: Administrator
-    password: "{{ item.local_administrator_password }}"
+    password: "{{ password }}"
     password_never_expires: yes
-    state: present
-  loop: "{{ domain.computers }}"
+  vars:
+    query_local_administrator_password: "computers[?name=='{{ host_name }}'].local_administrator_password | [0]" # query for the variable "password"
+    password: "{{ domain | json_query(query_local_administrator_password) }}"

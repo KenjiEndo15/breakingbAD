@@ -1,0 +1,30 @@
+- name: create organization units (OU)
+  community.windows.win_domain_ou:
+    name: "{{ item.name }}"
+  loop: "{{ domain.organizational_units }}"
+
+- name: create groups
+  win_domain_group:
+    scope: "{{ item.scope }}"
+    name: "{{ item.name }}"
+    path: "{{ item.path | default(omit) }}"
+  loop: "{{ domain.groups }}"
+
+- name: modify computers
+  win_domain_computer:
+    name: "{{ item.name }}"
+    dns_hostname: "{{ item.computer_fqdn }}"
+    ou: "{{ item.path }}"
+  loop: "{{ domain.computers }}"
+
+- name: create users
+  win_domain_user:
+    password_never_expires: yes
+    name: "{{ item.name }}"
+    firstname: "{{ item.firstname }}"
+    lastname: "{{ item.lastname }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups | default(omit) }}"
+    path: "{{ item.path }}"
+  loop: "{{ domain.users }}"
+  ignore_errors: yes

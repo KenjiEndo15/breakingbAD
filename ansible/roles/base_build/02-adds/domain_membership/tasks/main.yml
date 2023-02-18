@@ -13,11 +13,6 @@
 - name: add entity to a domain
   win_domain_membership:
     dns_domain_name: "{{ domain.domain_fqdn }}"
-    domain_admin_user: "{{ domain.administrator_name}}@{{ domain.domain_fqdn }}"
+    domain_admin_user: "{{ domain.administrator_name }}@{{ domain.domain_fqdn }}"
     domain_admin_password: "{{ domain.administrator_password }}"
     state: domain
-  register: reboot_domain_membership
-
-- name: reboot if needed
-  win_reboot:
-  when: reboot_domain_membership.reboot_required

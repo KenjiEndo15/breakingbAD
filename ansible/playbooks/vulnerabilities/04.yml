@@ -1,12 +1,21 @@
 - name: GPO
   hosts: dc01
   vars:
-    action: "{{ action }}"  # taken from the --extra-vars cli option
+    action: "{{ action }}" # extra-vars
   vars_files:
     - ../../vars/breakingbad.json
+
   roles:
     - role: ../../roles/vulnerabilities/04/enable
-      when: action == 'enable'
+      when: action == "enable"
+      user: "{{ user_name | default('gustavo.fring', true) }}" # extra-vars
+      ou: "{{ ou_name | default('Cartel', true) }}" # extra-vars
+      gpo: "{{ gpo_name | default('Los Pollos Hermanos', true) }}" # extra-vars
+      permissionlevel: "{{ permission_level | default('GpoEditDeleteModifySecurity', true) }}" # extra-vars
+      targetname: "{{ target_name | default('Authenticated Users', true) }}" # extra-vars
+      targettype: "{{ target_type | default('Group', true) }}" # extra-vars
+
     - role: ../../roles/vulnerabilities/04/disable
-      when: action == 'disable'
+      when: action == "disable"
+      gpo: "{{ gpo_name | default('Los Pollos Hermanos', true) }}" # extra-vars
   gather_facts: false

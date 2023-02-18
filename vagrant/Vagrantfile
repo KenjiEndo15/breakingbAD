@@ -8,6 +8,7 @@ require "yaml"
 vbox_group = "/breakingbAD"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    # config.vm.synced_folder '.', '/vagrant', disabled: true
     config.vm.provider "virtualbox" do |vbox|
         vbox.customize ["modifyvm", :id, "--groups", vbox_group]
     end
@@ -57,7 +58,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 vbox.memory         = vbox_memory
                 vbox.cpus           = vbox_cpus
                 vbox.linked_clone   = true
-                vbox.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
             end
         end
     end

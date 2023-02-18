@@ -1,0 +1,14 @@
+- name: change the keyboard layout for the local user "vagrant"
+  ansible.windows.win_shell:
+    Set-WinUserLanguageList -LanguageList {{ domain.language }} -Force
+
+- name: change the keyboard layout for the local user "Administrator"
+  ansible.windows.win_shell:
+    Set-WinUserLanguageList -LanguageList {{ domain.language }} -Force
+  vars:
+    query_local_administrator_password: "computers[?name=='{{ host_name }}'].local_administrator_password | [0]" # query for the variable "password"
+    password: "{{ domain | json_query(query_local_administrator_password) }}"
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: Administrator
+    ansible_become_password: "{{ password }}"

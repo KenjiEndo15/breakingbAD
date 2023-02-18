@@ -1,0 +1,5 @@
+- name: remove the user's description
+  ansible.windows.win_shell:
+    Set-ADUser -Identity "{{ user }}" -Description $null
+  vars:
+    user: user_name

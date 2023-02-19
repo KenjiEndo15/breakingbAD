@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'breakingbAD'
-copyright = '2022, KenjiEndo15'
+copyright = '2023, KenjiEndo15'
 author = 'KenjiEndo15'
 
 # -- General configuration ---------------------------------------------------

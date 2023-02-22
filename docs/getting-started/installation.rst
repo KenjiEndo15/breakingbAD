@@ -71,7 +71,7 @@ Python is used in version 3.10.6.
     python3 -m venv venv .
 
     # Activating it
-    source bin/source
+    source bin/activate
     
     # Installing the required Python dependencies (ansible-core, pywinrm...)
     python3 -m pip install -r requirements.txt

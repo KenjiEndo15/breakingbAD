@@ -34,7 +34,7 @@ I strongly recommend giving it a try.
 How does it work?
 =================
 
-.. image:: /assests/base_build-vulnerabilities.png
+.. image:: /assests/architecture.png
 
 Briefly, we use Vagrant to create **raw** Windows virtual machines without configurations **[1]**. 
 

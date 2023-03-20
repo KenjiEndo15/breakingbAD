@@ -71,6 +71,9 @@ To better name a vulnerability related to dangerous AD configurations, **identif
 * **ID = 04** | GPO
 * **ID = 05** | IPv6
 * **ID = 06** | LLMNR, NBT-NS & mDNS
+* **ID = 07** | Password in user's description
+* **ID = 08** | Kerberoasting
+* **ID = 09** | ASREProasting
 
 **Patch-related vulnerabilities**
 

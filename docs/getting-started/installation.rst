@@ -74,7 +74,7 @@ Installing the required dependencies with Python.
     python3 -m venv venv .
 
     # Activating it
-    source bin/source
+    source bin/activate
     
     # Installing the required Python dependencies (ansible-core, pywinrm...)
     python3 -m pip install -r requirements.txt

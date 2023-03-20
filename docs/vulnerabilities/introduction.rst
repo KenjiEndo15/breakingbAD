@@ -1,5 +1,6 @@
+############
 Introduction
-===============
+############
 The laboratory contains configurations vulnerabilities as well
 as the ones related to patching.
 
@@ -24,7 +25,7 @@ This vulnerability has been patched a while ago and it not
 related to any misconfiguration.
 
 Identifiers
------------
+###########
 In order to avoid lengthy or inaccurate file titles, identifiers
 are used for configuration vulnerabilities.
 Here's a list:
@@ -37,7 +38,7 @@ Here's a list:
 * **ID = 06** | LLMNR, NBT-NS & mDNS
 
 Actions on vulnerabilities
---------------------------
+##########################
 A vulnerability can have **at least 2** actions: enable, disable and trigger.
 To perform any of these actions, we run a playbook that takes a variable
 as input (called ``extra-vars``).
@@ -53,29 +54,29 @@ Therefore, running ``enable`` won't have any effect if it's run before ``disable
 Also, some vulnerabilities don't need to be triggered.
 
 Enable
-~~~~~~
+======
 To introduce a configuration vulnerability, a set of commands are launched on the target machine.
 
 Disable
-~~~~~~~
+=======
 To remove a configuration vulnerability, a set of commands are also launched on the target machine.
 
 Trigger
-~~~~~~~
+=======
 To observe any reaction from a vulnerability, we can trigger it.
 
 Targets
--------
+#######
 A default set of machines and users are targeted for the configuration vulnerabilities.
-You can choose these targets independently with ``extra-vars``
-(more on each vulnerabilities' own section).
+You can choose these targets independently with the ``extra-vars`` input variable
+(more on that in each vulnerability's own section).
 
 .. caution::
 
   Some objects such as users will be created only after a vulnerability was enabled.
   
 Table of availables actions, states, and targets
-------------------------------------------------
+################################################
 .. list-table::
     :header-rows: 1
 
@@ -107,3 +108,15 @@ Table of availables actions, states, and targets
       - Yes
       - Present
       - srv02 & walter.white
+    * - 07 | Password in user's description
+      - No
+      - Absent
+      - dc01 & saul.goodman
+    * - 08 | Kerberoasting
+      - No
+      - Absent
+      - dc01 & hector.salamanca
+    * - 09 | ASREProasting
+      - No
+      - Absent
+      - dc01 & jessie.pinkman

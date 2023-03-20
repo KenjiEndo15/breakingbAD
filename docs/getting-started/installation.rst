@@ -1,5 +1,6 @@
+############
 Installation
-============
+############
 To make the laboratory work smoothly, 
 we need to install the dependencies described in this section.
 
@@ -8,14 +9,14 @@ we need to install the dependencies described in this section.
     The laboratory was made using Ubuntu 22.04.1 LTS. Other distributions have not been tested.
 
 Requirements
-------------
+############
 The following requirements were taken from my environment.
 I propose specific versions for the tools as I haven't had the time to experiment with different versions.
 
 Please feel free to create a new issue if any installation step doesn't work for you.
 
 VirtualBox
-~~~~~~~~~~
+----------
 To install a specific version, you need to add VirtualBox repository.
 
 .. code-block::
@@ -32,7 +33,7 @@ Installing VirtualBox in version 6.1.
     sudo apt-get install virtualbox=6.1
 
 Vagrant
-~~~~~~~
+-------
 To install a specific version, you need to add Vagrant repository.
 
 .. code-block::
@@ -57,15 +58,17 @@ Installing Vagrant plugins.
     vagrant plugin install winrm-elevated
 
 Python & Ansible
-~~~~~~~~~~~~~~~~
+----------------
 
-Python is used in version 3.10.6.
+Installing the required dependencies with Python.
+
+.. Note::
+
+    I'm using Python in version 3.10.6.
 
 .. code-block::
 
-    # The python directory will store virtual environment data
-    cd python
-
+    # Current directory: python
     # Creating a virtual environment
     # sudo apt install python3.10-venv -y (if needed)
     python3 -m venv venv .
@@ -76,14 +79,14 @@ Python is used in version 3.10.6.
     # Installing the required Python dependencies (ansible-core, pywinrm...)
     python3 -m pip install -r requirements.txt
 
-.. code-block::
-
-    # Ansible directory (with the virtual environment activated)
-    cd ansible
-
-    # Installing the required Ansible dependencies
-    ansible-galaxy install -r requirements.yml
-
 .. tip::
 
-    To deactivate the virtual environment, just type in the terminal: ``deactivate``.
+    To deactivate the virtual environment created with Python, just type ``deactivate`` in the terminal.
+
+Installing the required dependencies with Ansible.
+
+.. code-block::
+
+    # Current directory: ansible
+    # Installing the required Ansible dependencies
+    ansible-galaxy install -r requirements.yml

@@ -36,6 +36,9 @@ Here's a list:
 * **ID = 04** | GPO
 * **ID = 05** | IPv6
 * **ID = 06** | LLMNR, NBT-NS & mDNS
+* **ID = 07** | Password in user's description
+* **ID = 08** | Kerberoasting
+* **ID = 09** | ASREProasting
 
 Actions on vulnerabilities
 ##########################

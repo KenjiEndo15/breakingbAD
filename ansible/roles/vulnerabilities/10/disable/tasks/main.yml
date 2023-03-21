@@ -1,0 +1,16 @@
+- name: remove the certificate template
+  ansible.windows.win_powershell:
+    script: |
+      if (Get-ADCSTemplate -DisplayName "ESC1") {
+        Remove-ADCSTemplate -DisplayName "ESC1" -Confirm:$False
+      }
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: "{{ domain.administrator_name }}"
+    ansible_become_password: "{{ domain.administrator_password }}"
+
+- name: delete the directory storing the certificate template
+  win_file:
+    path: C:\ESC1
+    state: absent

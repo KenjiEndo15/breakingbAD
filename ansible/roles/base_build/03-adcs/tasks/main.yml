@@ -27,3 +27,8 @@
     domain_username: "{{ domain.administrator_name }}"
     domain_password: "{{ domain.administrator_password }}"
     ca_common_name: "{{ domain.ca_name }}"
+  
+- name: install ADCSTemplate module
+  win_copy:
+    src: files/ADCSTemplate
+    dest: "C:\\Program Files\\WindowsPowerShell\\Modules"

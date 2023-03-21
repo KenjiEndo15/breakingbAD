@@ -7,3 +7,4 @@
 - import_playbook: 07.yml
 - import_playbook: 08.yml
 - import_playbook: 09.yml
+- import_playbook: 10.yml

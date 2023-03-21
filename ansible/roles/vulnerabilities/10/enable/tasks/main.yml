@@ -1,0 +1,22 @@
+- name: create a directory to store the certificate template
+  win_file:
+    path: C:\ESC1
+    state: directory
+
+- name: copy the certificate template
+  win_copy:
+    src: "files/ESC1.json"
+    dest: "C:\\ESC1\\ESC1.json"
+
+# Taken from GOAD (https://github.com/Orange-Cyberdefense/GOAD)
+- name: install the certificate template
+  ansible.windows.win_powershell:
+    script: |
+      if (-not(Get-ADCSTemplate -DisplayName "ESC1")) {
+        New-ADCSTemplate -DisplayName "ESC1" -JSON (Get-Content C:\ESC1\ESC1.json -Raw) -Identity "{{ domain.domain_netbios_name }}\Domain Users" -Publish
+      }
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    ansible_become_user: "{{ domain.administrator_name }}"
+    ansible_become_password: "{{ domain.administrator_password }}"

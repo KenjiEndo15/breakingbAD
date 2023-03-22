@@ -1,4 +1,4 @@
-- name: add SPN to the target user
+- name: remove SPN to the target user
   win_domain_user:
     name: "{{ user }}"
     spn_action: remove

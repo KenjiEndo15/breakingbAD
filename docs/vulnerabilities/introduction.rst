@@ -39,6 +39,8 @@ Here's a list:
 * **ID = 07** | Password in user's description
 * **ID = 08** | Kerberoasting
 * **ID = 09** | ASREProasting
+* **ID = 10** | ESC1
+* **ID = 11** | Anonymous Logon special group (inside the Pre-Windows 2000 Compatible Access group)
 
 Actions on vulnerabilities
 ##########################
@@ -123,3 +125,11 @@ Table of availables actions, states, and targets
       - No
       - Absent
       - dc01 & jessie.pinkman
+    * - 10 | ESC1
+      - No
+      - Absent
+      - dc01
+    * - 11 | Anonymous Logon special group
+      - No
+      - Absent
+      - dc01

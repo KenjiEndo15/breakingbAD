@@ -1,0 +1,71 @@
+ID07 | Password in user's description
+=====================================
+A classical case of finding the password of a user in the account description.
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 07 | Password in user's description
+      - No
+      - Absent
+      - dc01 & saul.goodman
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/07.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/07.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+A password is added in a user's account description.
+
+Reference:
+
+* `07/enable/tasks/main.yml`_
+
+Disable
+~~~~~~~
+The user's description is deleted.
+
+**Reference**:
+
+* `07/disable/tasks/main.yml`_
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    user_name = any user
+    action = enable | disable
+
+Example with the user **walter.white**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/07.yml --extra-vars "action=enable user_name=walter.white"
+
+.. Hyperlinks
+.. _`07/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/07/enable/tasks/main.yml
+.. _`07/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/07/disable/tasks/main.yml

@@ -1,0 +1,76 @@
+ID08 | Kerberoasting
+=====================================
+Making a user vulnerable to Kerberoasting by giving him an SPN.
+
+**References**:
+
+* `The Hacker Recipes`_ (Kerberoasting)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 08 | Kerberoasting
+      - No
+      - Absent
+      - dc01 & saul.goodman
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/08.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/08.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+A SPN is added for a user.
+
+Reference:
+
+* `08/enable/tasks/main.yml`_
+
+Disable
+~~~~~~~
+The SPN is deleted from the user.
+
+**Reference**:
+
+* `08/disable/tasks/main.yml`_
+
+Customization
+-------------
+You can choose another target than the default one.
+
+.. code-block::
+
+    user_name = any user
+    action = enable | disable
+
+Example with the user **walter.white**:
+
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/08.yml --extra-vars "action=enable user_name=walter.white"
+
+.. Hyperlinks
+.. _`The Hacker Recipes`: https://www.thehacker.recipes/ad/movement/kerberos/kerberoast
+.. _`08/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/08/enable/tasks/main.yml
+.. _`08/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/08/disable/tasks/main.yml

@@ -1,0 +1,63 @@
+ID10 | ESC1
+=====================================
+A certificate template is vulnerable to ESC1 when it permits
+specifying a subjectAltName (SAN) when requesting a certificate.
+
+**References**:
+
+* `The Hacker Recipes`_ (Certificate templates)
+* `HTTP418 INFOSEC`_ (ESC1 - Misconfigured Templates)
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 10 | ESC1
+      - No
+      - Absent
+      - dc01
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/10.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/10.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+Create a template vulnerable to ESC1.
+
+Reference:
+
+* `10/enable/tasks/main.yml`_
+
+Disable
+~~~~~~~
+Remove the vulnerable template.
+
+**Reference**:
+
+* `10/disable/tasks/main.yml`_
+
+.. Hyperlinks
+.. _`The Hacker Recipes`: https://www.thehacker.recipes/ad/movement/ad-cs/certificate-templates#template-allows-san-esc1
+.. _`HTTP418 INFOSEC`: https://http418infosec.com/ad-cs-the-certified-pre-owned-attacks/#esc1
+.. _`10/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/10/enable/tasks/main.yml
+.. _`10/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/10/disable/tasks/main.yml

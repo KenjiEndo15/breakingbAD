@@ -29,6 +29,8 @@ To better name a vulnerability related to dangerous AD configurations, identifie
 - ID = 07 | Password in user's description
 - ID = 08 | Kerberoasting
 - ID = 09 | ASREProasting
+- ID = 10 | ESC1
+- ID = 11 | Anonymous Logon special group (inside the Pre-Windows 2000 Compatible Access group)
 
 #### Patch-related vulnerabilities
 - sAMAccountName spoofing

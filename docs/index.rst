@@ -98,6 +98,11 @@ The laboratory make use of the following tools:
    vulnerabilities/id04
    vulnerabilities/id05
    vulnerabilities/id06
+   vulnerabilities/id07
+   vulnerabilities/id08
+   vulnerabilities/id09
+   vulnerabilities/id10
+   vulnerabilities/id11
 
 .. toctree::
    :maxdepth: 2

@@ -85,7 +85,8 @@ You can choose another target than the default one.
 .. code-block::
 
     host_name = dc01 | srv01 | srv02
-    user_name = walter.white | jessie.pinkman
+    user_name = any user
+    share_name = whatever string you want (without space)
     action = enable | disable | trigger
 
 Example with **srv01**:

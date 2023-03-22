@@ -1,0 +1,57 @@
+ID11 | Anonymous Logon special group
+=====================================
+Presence of the Anonymous Logon special group
+inside the Pre-Windows 2000 Compatible Access group.
+
+Table of availables actions, states, and targets
+------------------------------------------------
+.. list-table::
+    :header-rows: 1
+
+    * - Vulnerability ID
+      - Trigger available
+      - Default state
+      - Default target
+    * - 11 | Anonymous Logon special group
+      - No
+      - Absent
+      - dc01
+
+Launch
+------
+Enable
+~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/11.yml --extra-vars "action=enable"
+
+Disable
+~~~~~~~
+.. code-block::
+
+    # Current directory: ansible
+    ansible-playbook -i inventory.yml playbooks/vulnerabilities/11.yml --extra-vars "action=disable"
+
+Implementation
+--------------
+Enable
+~~~~~~
+Adding the Anonymous Logon special group
+inside the Pre-Windows 2000 Compatible Access group.
+
+Reference:
+
+* `11/enable/tasks/main.yml`_
+
+Disable
+~~~~~~~
+Removing the Anonymous Logon special group.
+
+**Reference**:
+
+* `11/disable/tasks/main.yml`_
+
+.. Hyperlinks
+.. _`11/enable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/11/enable/tasks/main.yml
+.. _`11/disable/tasks/main.yml`: https://github.com/KenjiEndo15/breakingbAD/blob/main/ansible/roles/vulnerabilities/11/disable/tasks/main.yml

@@ -1,0 +1,14 @@
+- name: Anonymous Logon special group inside the Pre-Windows 2000 Compatible Access group
+  hosts: dc01
+  vars:
+    action: "{{ action }}" # extra-vars
+  vars_files:
+    - ../../vars/breakingbad.json
+
+  roles:
+    - role: ../../roles/vulnerabilities/11/enable
+      when: action == 'enable'
+
+    - role: ../../roles/vulnerabilities/11/disable
+      when: action == 'disable'
+  gather_facts: false

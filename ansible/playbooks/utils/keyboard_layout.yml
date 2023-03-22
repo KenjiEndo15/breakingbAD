@@ -3,7 +3,7 @@
   vars_files:
     - ../../vars/breakingbad.json
   roles:
-    - role: ../../roles/utils/keyboard_layout_local_users
+    - role: ../../roles/utils/keyboard/keyboard_layout_local_users
   tags:
     - keyboard_layout_local_users
   gather_facts: false
@@ -13,7 +13,7 @@
   vars_files:
     - ../../vars/breakingbad.json
   roles:
-    - ../../roles/utils/keyboard_layout_domain_users
+    - ../../roles/utils/keyboard/keyboard_layout_domain_users
   tags:
     - keyboard_layout_domain_users
   gather_facts: false

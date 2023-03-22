@@ -1,0 +1,14 @@
+- name: create a directory to store the Firefox installer (.msi)
+  win_file:
+    path: C:\firefox
+    state: directory
+
+- name: download the Firefox installer (.msi)
+  win_get_url:
+    url: https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=en-US
+    dest: C:\firefox\firefox.msi
+
+- name: install Firefox
+  win_package: 
+    path: C:\firefox\firefox.msi
+    state: present

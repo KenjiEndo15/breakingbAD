@@ -1,0 +1,4 @@
+- name: Firefox browser
+  hosts: "{{ host_name | default('all') }}" # extra-vars
+  roles:
+    - role: ../../roles/utils/browser/firefox

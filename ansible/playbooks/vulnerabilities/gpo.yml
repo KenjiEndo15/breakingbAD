@@ -6,7 +6,7 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/04/enable
+    - role: ../../roles/vulnerabilities/gpo/enable
       when: action == "enable"
       user: "{{ user_name | default('gustavo.fring', true) }}" # extra-vars
       ou: "{{ ou_name | default('Cartel', true) }}" # extra-vars
@@ -15,7 +15,7 @@
       targetname: "{{ target_name | default('Authenticated Users', true) }}" # extra-vars
       targettype: "{{ target_type | default('Group', true) }}" # extra-vars
 
-    - role: ../../roles/vulnerabilities/04/disable
+    - role: ../../roles/vulnerabilities/gpo/disable
       when: action == "disable"
       gpo: "{{ gpo_name | default('Los Pollos Hermanos', true) }}" # extra-vars
   gather_facts: false

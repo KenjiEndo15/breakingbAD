@@ -4,12 +4,12 @@
     action: "{{ action }}" # extra-vars
     
   roles:
-    - role: ../../roles/vulnerabilities/05/enable
+    - role: ../../roles/vulnerabilities/ipv6/enable
       when: action == "enable"
 
-    - role: ../../roles/vulnerabilities/05/disable
+    - role: ../../roles/vulnerabilities/ipv6/disable
       when: action == "disable"
 
-    - role: ../../roles/vulnerabilities/05/trigger
+    - role: ../../roles/vulnerabilities/ipv6/trigger
       when: action == "trigger"
   gather_facts: false

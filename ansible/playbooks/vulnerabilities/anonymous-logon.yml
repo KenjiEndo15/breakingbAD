@@ -6,9 +6,9 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/11/enable
+    - role: ../../roles/vulnerabilities/anonymous-logon/enable
       when: action == 'enable'
 
-    - role: ../../roles/vulnerabilities/11/disable
+    - role: ../../roles/vulnerabilities/anonymous-logon/disable
       when: action == 'disable'
   gather_facts: false

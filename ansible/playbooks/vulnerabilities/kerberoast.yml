@@ -6,12 +6,12 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/08/enable
+    - role: ../../roles/vulnerabilities/kerberoast/enable
       when: action == 'enable'
       user: "{{ user_name | default('hector.salamanca', true) }}" # extra-vars
       spn: "{{ spn_name | default('HTTP/srv01', true) }}" # extra-vars
 
-    - role: ../../roles/vulnerabilities/08/disable
+    - role: ../../roles/vulnerabilities/kerberoast/disable
       when: action == 'disable'
       user: "{{ user_name | default('hector.salamanca', true) }}" # extra-vars
       spn: "{{ spn_name | default('HTTP/srv01', true) }}" # extra-vars

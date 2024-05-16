@@ -6,11 +6,11 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/09/enable
+    - role: ../../roles/vulnerabilities/asreproast/enable
       when: action == 'enable'
       user: "{{ user_name | default('jessie.pinkman', true) }}" # extra-vars
 
-    - role: ../../roles/vulnerabilities/09/disable
+    - role: ../../roles/vulnerabilities/asreproast/disable
       when: action == 'disable'
       user: "{{ user_name | default('jessie.pinkman', true) }}" # extra-vars
   gather_facts: false

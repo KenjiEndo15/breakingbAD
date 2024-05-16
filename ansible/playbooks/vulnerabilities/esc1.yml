@@ -6,9 +6,9 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/10/enable
+    - role: ../../roles/vulnerabilities/esc1/enable
       when: action == 'enable'
 
-    - role: ../../roles/vulnerabilities/10/disable
+    - role: ../../roles/vulnerabilities/esc1/disable
       when: action == 'disable'
   gather_facts: false

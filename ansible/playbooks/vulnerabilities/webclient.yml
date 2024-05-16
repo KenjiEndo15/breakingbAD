@@ -4,9 +4,9 @@
     action: "{{ action }}" # extra-vars
 
   roles:
-    - role: ../../roles/vulnerabilities/03/enable
+    - role: ../../roles/vulnerabilities/webclient/enable
       when: action == "enable"
 
-    - role: ../../roles/vulnerabilities/03/disable
+    - role: ../../roles/vulnerabilities/webclient/disable
       when: action == "disable"
   gather_facts: false

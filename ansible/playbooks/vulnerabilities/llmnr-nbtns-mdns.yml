@@ -6,15 +6,15 @@
     - ../../vars/breakingbad.json
 
   roles:
-    - role: ../../roles/vulnerabilities/06/enable
+    - role: ../../roles/vulnerabilities/llmnr-nbtns-mdns/enable
       when: action == "enable"
       protocol: "{{ protocol_name | default('all', true) }}" # extra-vars
 
-    - role: ../../roles/vulnerabilities/06/disable
+    - role: ../../roles/vulnerabilities/llmnr-nbtns-mdns/disable
       when: action == "disable"
       protocol: "{{ protocol_name | default('all', true) }}" # extra-vars
 
-    - role: ../../roles/vulnerabilities/06/trigger
+    - role: ../../roles/vulnerabilities/llmnr-nbtns-mdns/trigger
       when: action == "trigger"
       user: "{{ user_name | default('walter.white', true) }}" # extra-vars
       share: "{{ share_name | default('share-search-walter-white', true) }}" # extra-vars

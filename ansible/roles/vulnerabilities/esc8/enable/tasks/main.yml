@@ -1,3 +1,4 @@
 - name: install ADCS web enrollement
-  ansible.windows.win_shell:
-      Install-AdcsWebEnrollment -Force
+  ansible.windows.win_powershell:
+    script: |
+      Install-AdcsWebEnrollment -Force -ErrorAction SilentlyContinue

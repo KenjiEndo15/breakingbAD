@@ -1,4 +1,0 @@
-- name: uninstall ADCS web enrollement
-  ansible.windows.win_powershell:
-    script: |
-      Uninstall-AdcsWebEnrollment -Force

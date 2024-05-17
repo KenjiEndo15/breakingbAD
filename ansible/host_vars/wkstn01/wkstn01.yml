@@ -1,0 +1,14 @@
+# Host
+host_name: wkstn01
+host_ip: 192.168.56.30
+operating_system: windows
+
+# Vagrant
+vagrant_box: StefanScherer/windows_11
+vagrant_box_version: 2021.12.09
+
+# VirtualBox
+vbox_name: wkstn01
+vbox_gui: false
+vbox_memory: 3000
+vbox_cpus: 2

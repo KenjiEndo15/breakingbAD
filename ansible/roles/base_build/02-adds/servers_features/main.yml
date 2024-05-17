@@ -1,0 +1,5 @@
+- name: install File-Services and FS-FileServer
+  win_feature:
+    name: File-Services, FS-FileServer
+    state: present
+    include_management_tools: True

@@ -35,11 +35,21 @@
   gather_facts: false
 
 - name: Domain membership
-  hosts: srv01, srv02
+  hosts: srv01, srv02, wkstn01
   vars_files:
     - ../../vars/breakingbad.json
   roles:
     - role: ../../roles/base_build/02-adds/domain_membership
   tags:
     - domain_membership
+  gather_facts: false
+
+- name: Servers features
+  hosts: srv01, srv02
+  vars_files:
+    - ../../vars/breakingbad.json
+  roles:
+    - role: ../../roles/base_build/02-adds/servers_features
+  tags:
+    - servers_features
   gather_facts: false

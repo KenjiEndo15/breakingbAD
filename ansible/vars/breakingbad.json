@@ -65,6 +65,12 @@
                     "computer_fqdn"                 : "srv02.breakingbad.local",
                     "local_administrator_password"  : "645zmdF!",
                     "path"                          : "CN=computers,DC=breakingbad,DC=local"                    
+                },
+                {
+                    "name"                          : "wkstn01",
+                    "computer_fqdn"                 : "wkstn01.breakingbad.local",
+                    "local_administrator_password"  : "897tjdP!",
+                    "path"                          : "CN=computers,DC=breakingbad,DC=local"                    
                 }
             ],
 

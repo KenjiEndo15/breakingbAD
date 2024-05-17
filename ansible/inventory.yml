@@ -10,3 +10,7 @@ all:
           ansible_host: 192.168.56.20
         srv02:
           ansible_host: 192.168.56.21
+    workstations:
+      hosts:
+        wkstn01:
+          ansible_host: 192.168.56.30

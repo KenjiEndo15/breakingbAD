@@ -2,3 +2,4 @@ collections:
   - name: ansible.windows
   - name: community.general
   - name: community.windows
+  - name: microsoft.ad

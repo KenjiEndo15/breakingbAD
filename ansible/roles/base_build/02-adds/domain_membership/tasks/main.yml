@@ -4,12 +4,6 @@
     dns_servers:
     - "{{ hostvars['dc01']['host_ip'] }}"
 
-- name: install File-Services and FS-FileServer
-  win_feature:
-    name: File-Services, FS-FileServer
-    state: present
-    include_management_tools: True
-
 - name: add entity to a domain
   microsoft.ad.membership:
     dns_domain_name: "{{ domain.domain_fqdn }}"

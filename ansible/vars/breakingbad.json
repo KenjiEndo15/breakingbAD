@@ -12,7 +12,11 @@
             "organizational_units": [
                 {
                     "name": "Cartel",
-                    "path": "OU=Cartel,DC=breakingbad,DC=local"
+                    "path": "OU=cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name": "DEA",
+                    "path": "OU=dea,DC=breakingbad,DC=local"
                 }
             ],
 
@@ -20,17 +24,26 @@
                 {
                     "name"  : "Methcooks",
                     "scope" : "Global",
-                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"  : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"  : "Distributors",
                     "scope" : "Global",
-                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"  : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"  : "Lawyers",
                     "scope" : "Global",
-                    "path"  : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"  : "OU=cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"  : "Agents",
+                    "scope" : "Global",
+                    "path"  : "OU=dea,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"  : "WalterFamily",
+                    "scope" : "Global"
                 }
             ],
 
@@ -39,19 +52,19 @@
                     "name"                          : "dc01",
                     "computer_fqdn"                 : "dc01.breakingbad.local",
                     "local_administrator_password"  : "452dvcZ!",
-                    "path"                          : "OU=Domain Controllers,DC=breakingbad,DC=local"
+                    "path"                          : "OU=domain controllers,DC=breakingbad,DC=local"
                 },
                 {
                     "name"                          : "srv01",
                     "computer_fqdn"                 : "srv01.breakingbad.local",
                     "local_administrator_password"  : "132qxaQ!",
-                    "path"                          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"                          : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"                          : "srv02",
                     "computer_fqdn"                 : "srv02.breakingbad.local",
                     "local_administrator_password"  : "645zmdF!",
-                    "path"                          : "CN=Computers,DC=breakingbad,DC=local"                    
+                    "path"                          : "CN=computers,DC=breakingbad,DC=local"                    
                 }
             ],
 
@@ -60,41 +73,64 @@
                     "name"          : "walter.white",
                     "firstname"     : "Walter",
                     "lastname"      : "White",
+                    "description"   : "I am not in danger, Skyler. I am the danger!",
                     "password"      : "774azeG!",
-                    "groups"        : ["Methcooks"],
-                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "groups"        : ["Methcooks", "WalterFamily"],
+                    "path"          : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"          : "jessie.pinkman",
                     "firstname"     : "Jessie",
                     "lastname"      : "Pinkman",
+                    "description"   : "Yeah science!",
                     "password"      : "313lksV!",
                     "groups"        : ["Methcooks"],
-                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"          : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"          : "saul.goodman",
                     "firstname"     : "Saul",
                     "lastname"      : "Goodman",
                     "password"      : "657crsH!",
+                    "description"   : "It's all good man.",
                     "groups"        : ["Lawyers"],
-                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"          : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"          : "gustavo.fring",
                     "firstname"     : "Gustavo",
                     "lastname"      : "Fring",
+                    "description"   : "Little rata... What a reputation to leave behind.",
                     "password"      : "659ldoK!",
                     "groups"        : ["Distributors"],
-                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"          : "OU=cartel,DC=breakingbad,DC=local"
                 },
                 {
                     "name"          : "hector.salamanca",
                     "firstname"     : "Hector",
                     "lastname"      : "Salamanca",
+                    "description"   : "Ring Sound.",
                     "password"      : "346modL!",
                     "groups"        : ["Distributors"],
-                    "path"          : "OU=Cartel,DC=breakingbad,DC=local"
+                    "path"          : "OU=cartel,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "hank.schrader",
+                    "firstname"     : "Hank",
+                    "lastname"      : "Schrader",
+                    "description"   : "My name is ASAC Schrader and you can go fuck yourself.",
+                    "password"      : "991fffX!",
+                    "groups"        : ["Agents", "WalterFamily"],
+                    "path"          : "OU=dea,DC=breakingbad,DC=local"
+                },
+                {
+                    "name"          : "steven.gomez",
+                    "firstname"     : "Steven",
+                    "lastname"      : "Gomez",
+                    "description"   : "Burn in hell, you piece of shit.",
+                    "password"      : "991lofL!",
+                    "groups"        : ["Agents"],
+                    "path"          : "OU=dea,DC=breakingbad,DC=local"
                 }
             ]
     }

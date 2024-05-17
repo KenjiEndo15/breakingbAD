@@ -1,5 +1,5 @@
 - name: create a domain
-  win_domain:
+  microsoft.ad.domain:
     domain_netbios_name: "{{ domain.domain_netbios_name }}"
     dns_domain_name: "{{ domain.domain_fqdn }}"
     safe_mode_password: "{{ domain.administrator_password }}"

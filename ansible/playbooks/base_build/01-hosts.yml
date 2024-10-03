@@ -8,11 +8,21 @@
     - local_administrator_password
   gather_facts: false
 
-- name: Windows updates
+- name: Disable Windows updates
   hosts: all
   roles:
     - role: ../../roles/base_build/01-hosts/windows_updates_off
+  tags:
+    - disable_updates
   gather_facts: false
+
+# - name: Enable Windows updates
+#   hosts: all
+#   roles:
+#     - role: ../../roles/base_build/01-hosts/windows_updates_on
+#   tags:
+#     - enable_updates
+#   gather_facts: false
 
 - name: Resolve NIC teaming issues (via address registration)
   hosts: dc01

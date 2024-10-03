@@ -1,0 +1,25 @@
+# - name: ACL
+#   hosts: dc01
+#   vars:
+#     action: "{{ action }}" # extra-vars
+#   vars_files:
+#     - ../../vars/breakingbad.json
+
+#   roles:
+#     - role: ../../roles/vulnerabilities/acl/enable
+#       when: action == "enable"
+#       right: "{{ privilege_name | default('GenericAll', true) }}" # extra-vars
+#       sourceobject: "{{ source_object | default('gustavo.fring', true) }}" # extra-vars
+#       sourceobjecttype: "{{ source_object_type | default('user', true) }}" # extra-vars
+#       targetobject: "{{ target_object | default('hector.salamanca', true) }}" # extra-vars
+#       targetobjecttype: "{{ target_object_type | default('user', true) }}" # extra-vars
+#       inheritence: "{{ inheritence_value | default('None', false) }}" # extra-vars
+
+#     - role: ../../roles/vulnerabilities/acl/disable
+#       when: action == "disable"
+#       right: "{{ privilege_name | default('GenericAll', true) }}" # extra-vars
+#       sourceobject: "{{ source_object | default('gustavo.fring', true) }}" # extra-vars
+#       sourceobjecttype: "{{ source_object_type | default('user', true) }}" # extra-vars
+#       targetobject: "{{ target_object | default('hector.salamanca', true) }}" # extra-vars
+#       targetobjecttype: "{{ target_object_type | default('user', true) }}" # extra-vars
+#   gather_facts: false

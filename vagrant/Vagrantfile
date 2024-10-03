@@ -106,47 +106,47 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
     end
 
-        # Workstations
-        hosts_path_wkstn = "../ansible/host_vars/wkstn*/*.yml"
-        hosts_filename_wkstn = Dir.glob(hosts_path_wkstn)
-    
-        hosts_filename_wkstn.each do |host_filename_wkstn|
-            workstation = YAML.load_file(File.join(File.dirname(__FILE__), host_filename_wkstn))
-    
-            host_name           = workstation["host_name"]
-            host_ip             = workstation["host_ip"]
-            vagrant_box         = workstation["vagrant_box"]
-            vagrant_box_version = workstation["vagrant_box_version"]
-            vbox_name           = workstation["vbox_name"]
-            vbox_gui            = workstation["vbox_gui"]
-            vbox_memory         = workstation["vbox_memory"]
-            vbox_cpus           = workstation["vbox_cpus"]
-            vbox_os             = workstation["operating_system"]
-    
-            config.vm.define host_name do |wkstn|
-                wkstn.vm.hostname     = host_name
-                wkstn.vm.box          = vagrant_box 
-                wkstn.vm.box_version  = vagrant_box_version
-                wkstn.vm.network :private_network, ip: host_ip
-    
-                if Vagrant.has_plugin?("vagrant-vbguest") then
-                    config.vbguest.auto_update = false
-                end
-                
-                if vbox_os == "windows" then
-                    wkstn.vm.guest = :windows
-                    wkstn.vm.communicator = "winrm"
-                    wkstn.vm.provision :shell, :path => "script/Install-WMF3Hotfix.ps1", privileged: false
-                    wkstn.vm.provision :shell, :path => "script/ConfigureRemotingForAnsible.ps1", privileged: false
-                end
-    
-                wkstn.vm.provider :virtualbox do |vbox|              
-                    vbox.name           = File.basename(File.dirname(__FILE__)) + "_" + vbox_name + "_" + Time.now.to_i.to_s
-                    vbox.gui            = vbox_gui 
-                    vbox.memory         = vbox_memory
-                    vbox.cpus           = vbox_cpus
-                    vbox.linked_clone   = true
-                end
+    # Workstations
+    hosts_path_wkstn = "../ansible/host_vars/wkstn*/*.yml"
+    hosts_filename_wkstn = Dir.glob(hosts_path_wkstn)
+
+    hosts_filename_wkstn.each do |host_filename_wkstn|
+        workstation = YAML.load_file(File.join(File.dirname(__FILE__), host_filename_wkstn))
+
+        host_name           = workstation["host_name"]
+        host_ip             = workstation["host_ip"]
+        vagrant_box         = workstation["vagrant_box"]
+        vagrant_box_version = workstation["vagrant_box_version"]
+        vbox_name           = workstation["vbox_name"]
+        vbox_gui            = workstation["vbox_gui"]
+        vbox_memory         = workstation["vbox_memory"]
+        vbox_cpus           = workstation["vbox_cpus"]
+        vbox_os             = workstation["operating_system"]
+
+        config.vm.define host_name do |wkstn|
+            wkstn.vm.hostname     = host_name
+            wkstn.vm.box          = vagrant_box 
+            wkstn.vm.box_version  = vagrant_box_version
+            wkstn.vm.network :private_network, ip: host_ip
+
+            if Vagrant.has_plugin?("vagrant-vbguest") then
+                config.vbguest.auto_update = false
+            end
+            
+            if vbox_os == "windows" then
+                wkstn.vm.guest = :windows
+                wkstn.vm.communicator = "winrm"
+                wkstn.vm.provision :shell, :path => "script/Install-WMF3Hotfix.ps1", privileged: false
+                wkstn.vm.provision :shell, :path => "script/ConfigureRemotingForAnsible.ps1", privileged: false
+            end
+
+            wkstn.vm.provider :virtualbox do |vbox|              
+                vbox.name           = File.basename(File.dirname(__FILE__)) + "_" + vbox_name + "_" + Time.now.to_i.to_s
+                vbox.gui            = vbox_gui 
+                vbox.memory         = vbox_memory
+                vbox.cpus           = vbox_cpus
+                vbox.linked_clone   = true
             end
         end
+    end
 end
